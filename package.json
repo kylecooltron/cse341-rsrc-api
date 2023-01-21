@@ -1,0 +1,26 @@
+{
+  "name": "cse341-rsrc-api",
+  "version": "1.0.0",
+  "description": "Team Project - Class Resrouces API for CSE341",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js",
+    "start": "node server.js",
+    "swagger": "node ./swagger.js"
+  },
+  "author": "Kyle Coulon",
+  "homepage": "https://github.com/kylecooltron/cse341-rsrc-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.2",
+    "mongodb": "^4.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "nodemon": "^2.0.15",
+    "swagger-autogen": "^2.22.0",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
