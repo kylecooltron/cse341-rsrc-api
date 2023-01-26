@@ -1,12 +1,17 @@
 const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
-const database = "cse341-database";
-const collection = "class_resources";
+const database = "cse341-rsrc-database";
+const collection = "resources";
 const { validationResult } = require('express-validator');
-
+const { constructResourceFromBody } = require('../model/model.resource')
 
 const getAllResources = async (req, res) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
     await mongodb.getDb().db(database).collection(collection).find().toArray((err, list) => {
       if (err) {
         res.status(500).send({
@@ -24,29 +29,25 @@ const getAllResources = async (req, res) => {
 
 const getResourceById = async (req, res) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
 
-    await mongodb.getDb().db(database).collection(collection).find(
+    const resource = await mongodb.getDb().db(database).collection(collection).findOne(
       {
-        "_id": ObjectId(output.id)
+        "_id": ObjectId(req.params.id)
       }
-    ).toArray((err, list) => {
+    );
 
-      if (err) {
-        res.status(500).send({
-          error: `Cannot convert to array: ${err}`,
-        });
-      }
-
-      if (list.length > 0) {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(list[0]);
-      } else {
-        res.status(500).send({
-          error: `Level not found with id ${output.id}`,
-        });
-      }
-
-    })
+    if (resource) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(resource);
+    } else {
+      res.status(500).send({
+        error: `Resource not found with id ${req.params.id}`,
+      });
+    }
 
   } catch (err) {
     res.status(500).send({
@@ -64,18 +65,18 @@ const createResource = async (req, res) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
-
-    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ level_name: output.level_name });
+    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.title });
     if (alreadyExists) {
-      throw new Error(`Level with name already exists: ${output.level_name}`);
+      throw new Error(`Resource with title already exists: ${req.body.title}`);
     }
 
-    const response = await mongodb.getDb().db(database).collection(collection).insertOne(output);
+    const resource = constructResourceFromBody(req.body)
+    const response = await mongodb.getDb().db(database).collection(collection).insertOne(resource);
 
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
-      throw new Error(response.error || 'Some error occurred while creating the level.');
+      throw new Error(response.error || 'Some error occurred while creating the resource.');
     }
 
   } catch (err) {
@@ -90,15 +91,20 @@ const createResource = async (req, res) => {
 
 const deleteResource = async (req, res) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
 
-
-    const levelId = new ObjectId(output.id);
-    const response = await mongodb.getDb().db(database).collection(collection).deleteOne({ _id: levelId }, true);
+    const response = await mongodb.getDb().db(database).collection(collection).deleteOne(
+      { _id: new ObjectId(req.params.id) },
+      true
+    );
 
     if (response.deletedCount > 0) {
       res.status(204).send();
     } else {
-      const err_string = `ID: ${output.id} may not exist in the DB`;
+      const err_string = `ID: ${req.params.id} may not exist in the DB`;
       throw new Error(response.error || err_string);
     }
 
@@ -117,13 +123,13 @@ const updateResource = async (req, res) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const levelId = new ObjectId(params_output.id);
-    const response = await mongodb.getDb().db(database).collection(collection).replaceOne({ _id: levelId }, body_output);
+    const resource = constructResourceFromBody(req.body)
+    const response = await mongodb.getDb().db(database).collection(collection).replaceOne({ _id: new ObjectId(req.params.id) }, resource);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
     } else {
-      const err_string = `ID: ${params_output.id} may not exist in the DB`;
+      const err_string = `ID: ${req.params.id} may not exist in the DB`;
       throw new Error(response.error || err_string);
     }
 
