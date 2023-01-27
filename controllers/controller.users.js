@@ -20,7 +20,7 @@ const isAuthenticated = async (req, res) => {
             if (!await mongodb.getDb().db(database).collection(collection).findOne(user_profile_info)) {
                 const response = await mongodb.getDb().db(database).collection(collection).insertOne(user_profile_info);
                 if (response.acknowledged) {
-                    msg = `User profile info saved. Name: ${user_profile_info.user_name}`
+                    msg = `User profile info saved. Name: ${user_profile_info.name}, Profile ID: ${user_profile_info.profile_id}`
                 } else {
                     msg = 'Some error occurred while adding new user to db.';
                 }
