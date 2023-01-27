@@ -46,14 +46,14 @@ DELETE {{local}}/resources/63d2536bf5f39b559770438f HTTP/1.1
 POST {{render}}/resources HTTP/1.1
 content-type: application/json
 
-{"title": "Render Test","subject": "Test","description": "Test","likes": "0","date_created": "1/26/2023","last_modified": "1/26/2023","lesson_numbers": [1],"links": [],"search_tags": [],"contributing_students": [],"featured_technologies": []}
+{"title": "Render Test","subject": "Test","description": "Test","lesson_numbers": [1],"links": [],"search_tags": [],"contributing_students": [],"featured_technologies": []}
 
 
 ### Update resource
 PUT {{render}}/resources/63c8ede7136edea12ff5a9f8 HTTP/1.1 
 content-type: application/json
 
-{"title": "Render Test 1.0","subject": "Test","description": "Test","likes": "0","date_created": "1/26/2023","last_modified": "1/26/2023","lesson_numbers": [1],"links": [],"search_tags": [],"contributing_students": [],"featured_technologies": []}
+{"title": "Render Test 1.0","subject": "Test","description": "Test","lesson_numbers": [1],"links": [],"search_tags": [],"contributing_students": [],"featured_technologies": []}
 
 ### Delete resource by Id
 DELETE {{render}}/resources/63c8ede7136edea12ff5a9f8 HTTP/1.1

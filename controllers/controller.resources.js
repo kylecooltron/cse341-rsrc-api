@@ -90,9 +90,9 @@ const createResource = async (req, res) => {
       title: req.body.title,
       subject: req.body.subject,
       description: req.body.description,
-      likes: req.body.likes,
-      date_created: req.body.date_created,
-      last_modified: req.body.last_modified,
+      likes: 0,
+      date_created: new Date(),
+      last_modified: new Date(),
       lesson_numbers: req.body.lesson_numbers,
       links: req.body.links,
       search_tags: req.body.search_tags,
@@ -179,13 +179,22 @@ const updateResource = async (req, res) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
+    // attempt to get previous values for date_created and likes
+    let date_created = null;
+    let likes = 0;
+    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.title });
+    if (alreadyExists) {
+      date_created = alreadyExists.date_created;
+      likes = alreadyExists.likes;
+    }
+
     const resource = {
       title: req.body.title,
       subject: req.body.subject,
       description: req.body.description,
-      likes: req.body.likes,
-      date_created: req.body.date_created,
-      last_modified: req.body.last_modified,
+      likes: likes,
+      date_created: date_created,
+      last_modified: new Date(),
       lesson_numbers: req.body.lesson_numbers,
       links: req.body.links,
       search_tags: req.body.search_tags,

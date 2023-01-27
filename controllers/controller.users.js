@@ -3,6 +3,7 @@ const database = "cse341-rsrc-database";
 const collection = "users";
 
 const isAuthenticated = async (req, res) => {
+    // # swagger.ignore = true
     /**
      * Returns login state
      *  If login succesful user profile information is saved to database
