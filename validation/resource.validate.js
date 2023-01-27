@@ -30,13 +30,11 @@ const resourceValidate = [
 
 
 /*
-const tagValidate = []
-
-const contributingStudentsValidate = []
+const tagsValidate = []
 
 const featuredTechnologiesValidate = []
 
-// may not need: const userValidate = []
+// const userValidate = []
 
 */
 
