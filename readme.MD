@@ -11,6 +11,18 @@ https://cse341-rsrc-api.onrender.com
 
 
 
+To start server:
+    "npm start"
+
+Development Notes:
+    To start server in dev-mode:
+        "npm run devStart"
+
+    To run Swagger Autogen:
+        "npm run swagger"
+
+
+
 ROBERT:
 
     Tags
@@ -56,6 +68,8 @@ TODO:
 
     Update README.MD
     Clean up code/comments
+
+    Write unit tests
 
 
 

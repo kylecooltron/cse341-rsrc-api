@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Level API",
-    "description": "Kyle level saving API",
+    "title": "CSE 341 RSCS API",
+    "description": "Class Resource Sharing API <hr>\n        <br>Note: Some features require user to be authenticated.</br>\n        To login navigate to <a href='/login' target=\"_blank\">Login</a>\n        To log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
     "version": "1.0.0"
   },
   "host": "cse341-level-api.onrender.com",
@@ -11,12 +11,9 @@
     "https"
   ],
   "paths": {
-    "/levels/": {
+    "/": {
       "get": {
-        "description": "Return a list of all levels from DB",
-        "produces": [
-          "application/json"
-        ],
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -26,45 +23,85 @@
             "description": "Internal Server Error"
           }
         }
+      }
+    },
+    "/resources/": {
+      "get": {
+        "description": "Request list of all resources",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       },
       "post": {
-        "description": "Create a new level",
+        "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Create new resource (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
-                "level_name": {
-                  "example": "Level 1"
+                "title": {
+                  "type": "string",
+                  "example": "Test Resource Title 1.0"
                 },
-                "level_author": {
-                  "example": "Kyle Cool"
+                "subject": {
+                  "type": "string",
+                  "example": "Test Resource Subject"
                 },
-                "level_block_data": {
-                  "example": [
-                    {
-                      "grid_x": "10",
-                      "grid_y": "12",
-                      "width": "1",
-                      "height": "1",
-                      "color": "green",
-                      "bouncy": "false",
-                      "causes_damage": "false"
-                    },
-                    {
-                      "grid_x": "11",
-                      "grid_y": "13",
-                      "width": "1",
-                      "height": "1",
-                      "color": "green",
-                      "bouncy": "false",
-                      "causes_damage": "false"
-                    }
-                  ]
+                "description": {
+                  "type": "string",
+                  "example": "description"
+                },
+                "lesson_numbers": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "links": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "search_tags": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "contributing_students": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "featured_technologies": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 }
-              }
+              },
+              "required": [
+                "title",
+                "subject",
+                "description",
+                "lesson_numbers",
+                "links",
+                "search_tags",
+                "contributing_students",
+                "featured_technologies"
+              ]
             }
           }
         ],
@@ -72,15 +109,18 @@
           "201": {
             "description": "Created"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/levels/{id}": {
+    "/resources/{id}": {
       "get": {
-        "description": "Get level by ID",
+        "description": "Request resource by ID",
         "produces": [
           "application/json"
         ],
@@ -96,13 +136,16 @@
           "200": {
             "description": "OK"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "description": "Update an existing level by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -111,31 +154,60 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "obj",
             "in": "body",
+            "description": "Update existing resource (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
-                "level_name": {
-                  "example": "Level 1.1"
+                "title": {
+                  "type": "string",
+                  "example": "Test Resource Title 1.0"
                 },
-                "level_author": {
-                  "example": "Kyle Coolon"
+                "subject": {
+                  "type": "string",
+                  "example": "Test Resource Subject"
                 },
-                "level_block_data": {
-                  "example": [
-                    {
-                      "grid_x": "9",
-                      "grid_y": "8",
-                      "width": "1",
-                      "height": "1",
-                      "color": "red",
-                      "bouncy": "false",
-                      "causes_damage": "false"
-                    }
-                  ]
+                "description": {
+                  "type": "string",
+                  "example": "description"
+                },
+                "lesson_numbers": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "links": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "search_tags": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "contributing_students": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "featured_technologies": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 }
-              }
+              },
+              "required": [
+                "title",
+                "subject",
+                "description",
+                "lesson_numbers",
+                "links",
+                "search_tags",
+                "contributing_students",
+                "featured_technologies"
+              ]
             }
           }
         ],
@@ -143,13 +215,16 @@
           "204": {
             "description": "No Content"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "description": "Delete an existing level by ID",
+        "description": "Delete existing resource (Requires user to be logged in)",
         "parameters": [
           {
             "name": "id",
@@ -161,6 +236,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"

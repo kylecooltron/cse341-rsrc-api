@@ -2,13 +2,29 @@ const express = require('express');
 const app = express();
 const mongodb = require('./db/connect');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+
+const { auth } = require('express-openid-connect');
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.SECRET,
+  baseURL: process.env.BASEURL,
+  clientID: process.env.CLIENTID,
+  issuerBaseURL: process.env.ISSUER
+};
+
 
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;
 
 app
+  .use(auth(config))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -24,12 +40,6 @@ app
   })
   .use('/', require('./routes'));
 
-// this seems to catch error messages I created myself before they are sent in response
-// // eslint-disable-next-line no-undef
-// process.on('uncaughtException', (err, origin) => {
-//   // eslint-disable-next-line no-undef
-//   console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-// });
 
 // eslint-disable-next-line no-unused-vars
 mongodb.initDb((err, mongodb) => {

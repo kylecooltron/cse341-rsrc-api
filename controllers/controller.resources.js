@@ -3,9 +3,9 @@ const { ObjectId } = require('mongodb');
 const database = "cse341-rsrc-database";
 const collection = "resources";
 const { validationResult } = require('express-validator');
-const { constructResourceFromBody } = require('../model/model.resource')
 
 const getAllResources = async (req, res) => {
+  // #swagger.description = 'Request list of all resources'
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -28,6 +28,7 @@ const getAllResources = async (req, res) => {
 };
 
 const getResourceById = async (req, res) => {
+  // #swagger.description = 'Request resource by ID'
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -59,6 +60,21 @@ const getResourceById = async (req, res) => {
 
 
 const createResource = async (req, res) => {
+  /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: 'Create new resource (Requires user to be logged in)',
+                schema: {
+                    $title: 'Test Resource Title 1.0',
+                    $subject: 'Test Resource Subject',
+                    $description: 'description',
+                    $lesson_numbers: [],
+                    $links: [],
+                    $search_tags: [],
+                    $contributing_students: [],
+                    $featured_technologies: [],
+                }
+        } */
+
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -70,7 +86,21 @@ const createResource = async (req, res) => {
       throw new Error(`Resource with title already exists: ${req.body.title}`);
     }
 
-    const resource = constructResourceFromBody(req.body)
+    const resource = {
+      title: req.body.title,
+      subject: req.body.subject,
+      description: req.body.description,
+      likes: req.body.likes,
+      date_created: req.body.date_created,
+      last_modified: req.body.last_modified,
+      lesson_numbers: req.body.lesson_numbers,
+      links: req.body.links,
+      search_tags: req.body.search_tags,
+      contributing_students: req.body.contributing_students,
+      featured_technologies: req.body.featured_technologies
+    }
+
+    // const resource = constructResourceFromBody(req.body)
     const response = await mongodb.getDb().db(database).collection(collection).insertOne(resource);
 
     if (response.acknowledged) {
@@ -90,7 +120,13 @@ const createResource = async (req, res) => {
 
 
 const deleteResource = async (req, res) => {
+  // #swagger.description = 'Delete existing resource (Requires user to be logged in)'
   try {
+
+    if (!req.oidc.isAuthenticated()) {
+      throw new Error(`Not authorized to delete resources, please log in at /login `);
+    }
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -117,13 +153,45 @@ const deleteResource = async (req, res) => {
 };
 
 const updateResource = async (req, res) => {
+  /*    #swagger.parameters['obj'] = {
+              in: 'body',
+              description: 'Update existing resource (Requires user to be logged in)',
+              schema: {
+                  $title: 'Test Resource Title 1.0',
+                  $subject: 'Test Resource Subject',
+                  $description: 'description',
+                  $lesson_numbers: [],
+                  $links: [],
+                  $search_tags: [],
+                  $contributing_students: [],
+                  $featured_technologies: [],
+              }
+      } */
+
   try {
+
+    if (!req.oidc.isAuthenticated()) {
+      throw new Error(`Not authorized to update resources, please log in at /login `);
+    }
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const resource = constructResourceFromBody(req.body)
+    const resource = {
+      title: req.body.title,
+      subject: req.body.subject,
+      description: req.body.description,
+      likes: req.body.likes,
+      date_created: req.body.date_created,
+      last_modified: req.body.last_modified,
+      lesson_numbers: req.body.lesson_numbers,
+      links: req.body.links,
+      search_tags: req.body.search_tags,
+      contributing_students: req.body.contributing_students,
+      featured_technologies: req.body.featured_technologies
+    }
     const response = await mongodb.getDb().db(database).collection(collection).replaceOne({ _id: new ObjectId(req.params.id) }, resource);
 
     if (response.modifiedCount > 0) {
