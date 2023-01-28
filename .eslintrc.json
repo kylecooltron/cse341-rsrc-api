@@ -4,7 +4,8 @@
         "commonjs": true,
         "es2021": true
     },
-    "extends": "eslint:recommended",
+    // added "plugin:node/recommended" to extends - msierra - 28012023
+    "extends": ["eslint:recommended", "plugin:node/recommended"],
     "overrides": [
     ],
     "parserOptions": {
