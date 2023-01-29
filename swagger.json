@@ -5,7 +5,7 @@
     "description": "Class Resource Sharing API <hr>\n        <br>Note: Some features require user to be authenticated.</br>\n        To login navigate to <a href='/login' target=\"_blank\">Login</a>\n        To log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
     "version": "1.0.0"
   },
-  "host": "cse341-level-api.onrender.com",
+  "host": "cse341-rsrc-api.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
