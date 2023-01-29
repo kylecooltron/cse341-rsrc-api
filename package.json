@@ -1,31 +1,48 @@
 {
-  "name": "cse341-rsrc-api",
-  "version": "1.0.0",
-  "description": "Team Project - Class Resrouces API for CSE341",
-  "main": "server.js",
-  "scripts": {
-    "test": "jest",
-    "devStart": "nodemon server.js",
-    "start": "node server.js",
-    "swagger": "node ./swagger.js"
-  },
-  "author": "Kyle Coulon",
-  "homepage": "https://github.com/kylecooltron/cse341-rsrc-api#readme",
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.17.3",
-    "express-openid-connect": "^2.12.0",
-    "express-validator": "^6.14.2",
-    "mongodb": "^4.13.0"
-  },
-  "devDependencies": {
-    "@shelf/jest-mongodb": "^4.1.6",
-    "eslint": "^8.31.0",
-    "jest": "^29.4.1",
-    "mongodb-memory-server": "^8.11.4",
-    "nodemon": "^2.0.15",
-    "supertest": "^6.3.3",
-    "swagger-autogen": "^2.22.0",
-    "swagger-ui-express": "^4.6.0"
-  }
+	"name": "cse341-rsrc-api",
+	"version": "1.0.0",
+	"description": "Team Project - Class Resrouces API for CSE341",
+	"main": "server.js",
+	"scripts": {
+		"test": "jest",
+		"devStart": "nodemon server.js",
+		"start": "node server.js",
+		"swagger": "node ./swagger.js"
+	},
+	"author": "Kyle Coulon",
+	"contributors": [
+		{
+			"name": "Kyle Coulon",
+			"email": "???byui.edu"
+		},
+		{
+			"name": "Robert Odell",
+			"email": "???@byui.edu"
+		},
+		{
+			"name": "A. Michael Sierra",
+			"email": "sie2003@byui.edu"
+		}
+	],
+	"homepage": "https://github.com/kylecooltron/cse341-rsrc-api#readme",
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-graphql": "^0.12.0",
+		"express-openid-connect": "^2.12.0",
+		"express-validator": "^6.14.3",
+		"graphql": "^16.6.0",
+		"mongodb": "^4.13.0",
+		"mongoose": "^6.9.0",
+		"@shelf/jest-mongodb": "^4.1.6",
+		"jest": "^29.4.1",
+		"mongodb-memory-server": "^8.11.4",
+		"supertest": "^6.3.3"
+	},
+	"devDependencies": {
+		"eslint": "^8.31.0",
+		"nodemon": "^2.0.15",
+		"swagger-autogen": "^2.22.0",
+		"swagger-ui-express": "^4.6.0"
+	}
 }

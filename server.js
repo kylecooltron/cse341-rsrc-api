@@ -23,12 +23,10 @@ const config = {
   issuerBaseURL: process.env.ISSUER
 };
 
-
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;
 
-app
-  .use(auth(config))
+app.use(auth(config))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -39,11 +37,13 @@ app
       'Origin, X-Requested-With, Content-Type, Acccept, Z-Key'
     );
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONs');
+    res.setHeader(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONs'
+    );
     next();
   })
   .use('/', require('./routes'));
-
 
 // eslint-disable-next-line no-unused-vars
 mongodb.initDb((err, mongodb) => {
@@ -51,9 +51,7 @@ mongodb.initDb((err, mongodb) => {
     console.log(err);
   } else {
     app.listen(port, () => {
-      console.log(`Connected to DB and listening on port ${port}`)
-    })
+      console.log(`Connected to DB and listening on port ${port}`);
+    });
   }
 });
-
-
