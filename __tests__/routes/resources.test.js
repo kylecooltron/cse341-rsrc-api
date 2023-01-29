@@ -222,7 +222,7 @@ describe('Test Resources handlers with in-memory mongo', () => {
         expect(validate_result.statusCode).toBe(200);
         console.log(validate_result.body);
         // expect data response to prove title was updated
-        expect(validate_result.body[0].title).toBe("Updated Title");
+        expect(validate_result.body.title).toBe("Updated Title");
     });
 
 })
