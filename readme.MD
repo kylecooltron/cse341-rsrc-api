@@ -21,6 +21,9 @@ Development Notes:
     To run Swagger Autogen:
         "npm run swagger"
 
+    If dependency tree gets messed up again just remember to install express-graphQL before graphql like this:
+        npm install express-graphql graphql --save
+
 
 
 ROBERT:
