@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const mongodb = require('../../db/connect');
+const mongodb = require('../db/connect');
 const request = require('supertest');
 const express = require('express');
 const { MongoMemoryServer } = require('mongodb-memory-server')
@@ -114,7 +114,7 @@ describe('Test Resources handlers with in-memory mongo', () => {
     app.use(mock_auth)
         .use(express.json())
         .use(express.urlencoded({ extended: true }))
-        .use('/', require('../../routes'));
+        .use('/', require('../routes'));
 
     // clear resources collection after each test
     afterEach(async () => {
