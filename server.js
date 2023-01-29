@@ -13,9 +13,13 @@ const { auth } = require('express-openid-connect');
 const config = {
   authRequired: false,
   auth0Logout: true,
+  //eslint-disable-next-line no-undef
   secret: process.env.SECRET,
+  //eslint-disable-next-line no-undef
   baseURL: process.env.BASEURL,
+  //eslint-disable-next-line no-undef
   clientID: process.env.CLIENTID,
+  //eslint-disable-next-line no-undef
   issuerBaseURL: process.env.ISSUER
 };
 

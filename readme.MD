@@ -31,6 +31,8 @@ ROBERT:
         Make Controller
         Set up express-validator for POST & PUT
         Add authorization requirement to certain routes
+        Write unit tests for tags handlers
+        Ensure tags requests are available and descriptions/example data is provided on Swagger UI
 
 
 MICHAEL:
@@ -41,6 +43,8 @@ MICHAEL:
         Make Controller
         Set up express-validator for POST & PUT
         Add authorization requirement to certain routes
+        Write unit tests for technologies/languages handlers
+        Ensure technologies requests are available and descriptions/example data is provided on Swagger UI
 
     Set up GraphQL
         Set up Mongoose DB
@@ -50,26 +54,51 @@ MICHAEL:
 
 KYLE:
 
+    General
+        ✔️Set up repo and added teammates as collaborators
+        ✔️Set up render with environment variables
+        ✔️Set up MongoDB
+
+    Validation
+        ✔️set up express validator middleware
+
     Users Authentication
-        Make collection
-        Make Routes
-        Make Controller
-        Include user roicd.sub ID in resources
-        ??Set up express-validator for POST & PUT
-        Add authorization requirement to certain routes
+        ✔️Set up Auth0 account
+        ✔️added auth middleware
+        ✔️Made users collection
+        ✔️Made user data saving controller/handler
+        ✔️Add authorization requirement to certain routes
+
+    Resources Controller
+        ✔️Wrote GET GET/id PUT POST DELETE routes/controller handlers for Resources
+        ✔️express validator conditions for resources
+        ✔️Require authorization on certain routes
+        ✔️Write Unit tests
+            - unit tests mock authentication
+            - unit tests use in-memory database
+            - unit tests use mock data
+        ❌Include user roicd.sub ID in resources
+        ✔️Ensured resources requests are available on Swagger UI
+            - have descriptions and example data
 
 
 
 TODO:
-    Set up Auth0 account
-
-    Set up Swagger.JS
-    Ensuring all routes are available on Swagger UI
-
-    Update README.MD
+    
+    Double check that swagger.json is up to date and all requests are functional
     Clean up code/comments
+    Update README.MD
 
-    Write unit tests
+    EXTRA:
+        resources documents to store id of related tags from tags collection
+        resources documents to store id of related technologies/languages from collection
+        tags documents to store list of resource documents they appear in
+        handler to search tags by name (case insensitive, partial matches)
+        handlers to search resources by title, subject, lesson, authors, languages/technologies
+        front-end UI form for creating resources after logging in
+        
+
+    
 
 
 
