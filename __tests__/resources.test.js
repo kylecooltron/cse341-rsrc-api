@@ -201,7 +201,7 @@ describe('Test Resources handlers with in-memory mongo', () => {
 
     test('update resource by ID /:id', async () => {
         /**
-         * Test the deleteResource handler in Resources controller
+         * Test the updateResource handler in Resources controller
          */
         // add fake resources to in-memory DB
         addFakeData();
