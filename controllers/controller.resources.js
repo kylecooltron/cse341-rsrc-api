@@ -123,8 +123,6 @@ const deleteResource = async (req, res) => {
   // #swagger.description = 'Delete existing resource (Requires user to be logged in)'
   try {
 
-    console.log(req.oidc);
-
     if (!req.oidc.isAuthenticated()) {
       throw new Error(`Not authorized to delete resources, please log in at /login `);
     }
