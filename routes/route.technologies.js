@@ -4,7 +4,6 @@
 const routes = require('express').Router();
 const technologyController = require('../controllers/controller.technologies');
 const { validateTechnology } = require('../validation/validate.technologies');
-
 const { checkAccess } = require('../middlewares/authorize');
 
 // get all technologies
