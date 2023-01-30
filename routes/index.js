@@ -1,5 +1,9 @@
 const routes = require('express').Router();
 
-routes.use('/resources', require('./route.resources'))
+// Base route returns login state and saves user data
+routes.use('/', require('./route.users'));
+// handles resource get, post, put, delete requests
+routes.use('/resources', require('./route.resources'));
+routes.use('/technologies', require('./route.technologies'));
 
 module.exports = routes;

@@ -2,14 +2,14 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
-    "extends": "eslint:recommended",
-    "overrides": [
-    ],
+    // added "plugin:node/recommended" to remove errors from my end - msierrs 30Jan
+    "extends": ["eslint:recommended","plugin:node/recommended"],
+    "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "rules": {
-    }
+    "rules": {}
 }
