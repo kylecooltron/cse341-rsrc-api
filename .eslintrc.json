@@ -5,7 +5,8 @@
         "es2021": true,
         "jest": true
     },
-    "extends": "eslint:recommended",
+    // added "plugin:node/recommended" to remove errors from my end - msierrs 30Jan
+    "extends": ["eslint:recommended","plugin:node/recommended"],
     "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest"
