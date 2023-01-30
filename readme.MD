@@ -9,22 +9,18 @@ https://kylecooltron.github.io/
 Render URL
 https://cse341-rsrc-api.onrender.com
 
-
-
 To start server:
-    "npm start"
+"npm start"
 
 Development Notes:
-    To start server in dev-mode:
-        "npm run devStart"
+To start server in dev-mode:
+"npm run devStart"
 
     To run Swagger Autogen:
         "npm run swagger"
 
     If dependency tree gets messed up again just remember to install express-graphQL before graphql like this:
         npm install express-graphql graphql --save
-
-
 
 ROBERT:
 
@@ -37,23 +33,21 @@ ROBERT:
         Write unit tests for tags handlers
         Ensure tags requests are available and descriptions/example data is provided on Swagger UI
 
-
 MICHAEL:
 
     Technologies/Languages
-        Make Collection
-        Make Routes
-        Make Controller
-        Set up express-validator for POST & PUT
-        Add authorization requirement to certain routes
+        ✔️Make Collection
+        ✔️Make Routes
+        ✔️Make Controller
+        ✔️Set up express-validator for POST & PUT
+        ✔️Add authorization requirement to certain routes
         Write unit tests for technologies/languages handlers
-        Ensure technologies requests are available and descriptions/example data is provided on Swagger UI
+        ✔️Ensure technologies requests are available and descriptions/example data is provided on Swagger UI
 
     Set up GraphQL
-        Set up Mongoose DB
+        ✔️Set up Mongoose DB
         Create Schema, Models
         Set up GraphQL Routes
-
 
 KYLE:
 
@@ -84,10 +78,8 @@ KYLE:
         ✔️Ensured resources requests are available on Swagger UI
             - have descriptions and example data
 
-
-
 TODO:
-    
+
     Double check that swagger.json is up to date and all requests are functional
     Clean up code/comments
     Update README.MD
@@ -99,16 +91,3 @@ TODO:
         handler to search tags by name (case insensitive, partial matches)
         handlers to search resources by title, subject, lesson, authors, languages/technologies
         front-end UI form for creating resources after logging in
-        
-
-    
-
-
-
-
-
-
-
-
-
-
