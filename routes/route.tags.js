@@ -3,16 +3,16 @@
  */
 const routes = require('express').Router();
 const tagsController = require('../controllers/controller.tags');
-const { tagValidate } = require('../validation/tag.validate');
+const { tagValidate } = require('../validation/validate.tags');
 
 // get all tags
 routes.get('/', tagsController.getAllTags);
 // get tag by id
 routes.get('/:id', tagsController.getTagById);
 // post
-routes.post('/', tagsValidate, tagController.createTag);
+routes.post('/', tagValidate, tagsController.createTag);
 // put
-routes.put('/:id', tagsValidate, tagController.updateTag);
+routes.put('/:id', tagValidate, tagsController.updateTag);
 // delete
 routes.delete('/:id', tagsController.deleteTag);
 

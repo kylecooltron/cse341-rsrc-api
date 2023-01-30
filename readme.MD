@@ -27,11 +27,11 @@ To start server in dev-mode:
 ROBERT:
 
     Tags
-        Make Collection
-        Make Routes
-        Make Controller
-        Set up express-validator for POST & PUT
-        Add authorization requirement to certain routes
+        ✔️Make Collection
+        ✔️Make Routes
+        ✔️Make Controller
+        ✔️Set up express-validator for POST & PUT
+        ✔️Add authorization requirement to certain routes
         Write unit tests for tags handlers
         Ensure tags requests are available and descriptions/example data is provided on Swagger UI
 
