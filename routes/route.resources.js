@@ -3,7 +3,7 @@
  */
 const routes = require('express').Router();
 const resourcesController = require('../controllers/controller.resources');
-const { validateResource } = require('../validation/validate.resources');
+const { validateResource } = require('../middlewares/validate.resources');
 const { checkAccess } = require('../middlewares/authorize');
 
 // get all resources

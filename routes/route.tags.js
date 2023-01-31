@@ -3,7 +3,7 @@
  */
 const routes = require('express').Router();
 const tagsController = require('../controllers/controller.tags');
-const { validateTag } = require('../validation/validate.tags');
+const { validateTag } = require('../middlewares/validate.tags');
 const { checkAccess } = require('../middlewares/authorize');
 
 // get all tags
