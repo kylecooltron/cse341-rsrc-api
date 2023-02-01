@@ -3,10 +3,12 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
 	info: {
 		title: 'CSE 341 RSCS API',
-		description: `Class Resource Sharing API <hr>
-        <br>Note: Some features require user to be authenticated.</br>
-        To login navigate to <a href='/login' target="_blank">Login</a>
-        To log out navigate to <a href='/logout' target="_blank">Log Out</a>`,
+		description: `<b>Class Resource Sharing API</b> <hr>
+			This API would allow people enrolled in the class to log in, and
+			create or find resources related to various subjects in the class.
+			<br><i><font color="gray">Note: Some features require user to be authenticated.</font></i></br>
+			To login navigate to <a href='/login' target="_blank">Login</a>
+			To log out navigate to <a href='/logout' target="_blank">Log Out</a>`,
 	},
 	// URL for localhost
 	host: 'localhost:3000',

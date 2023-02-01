@@ -7,7 +7,8 @@ const { technologyModel } = require('../models/model.technology');
 
 const getAllTechnologies = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
-	// #swagger.description = 'Request list of all languages-technologies'
+	// #swagger.description = 'Request list of all technologies/languages'
+	// #swagger.summary = 'Return list of technologies/languages'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -36,6 +37,7 @@ const getAllTechnologies = async (req, res) => {
 const getTechnologyById = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
 	// #swagger.description = 'Request technology by ID'
+	// #swagger.summary = 'Find technology by ID'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -68,6 +70,7 @@ const getTechnologyById = async (req, res) => {
 
 const createTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
+	// #swagger.summary = 'Create technology'
 	/*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: 'Create new technology (Requires user to be logged in)',
@@ -121,6 +124,7 @@ const createTechnology = async (req, res) => {
 
 const deleteTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
+	// #swagger.summary = 'Deletes a technology by ID'
 	// #swagger.description = 'Delete existing technology (Requires user to be logged in)'
 	try {
 		if (!req.oidc.isAuthenticated()) {
@@ -156,6 +160,7 @@ const deleteTechnology = async (req, res) => {
 
 const updateTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
+	// #swagger.summary = 'Updates technology by ID'
 	/*    #swagger.parameters['obj'] = {
               in: 'body',
               description: 'Update existing technology (Requires user to be logged in)',

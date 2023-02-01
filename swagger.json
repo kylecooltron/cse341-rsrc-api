@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 RSCS API",
-    "description": "Class Resource Sharing API <hr>\n        <br>Note: Some features require user to be authenticated.</br>\n        To login navigate to <a href='/login' target=\"_blank\">Login</a>\n        To log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
+    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
@@ -275,7 +275,8 @@
         "tags": [
           "Technologies"
         ],
-        "description": "Request list of all languages-technologies",
+        "summary": "Return list of technologies/languages",
+        "description": "Request list of all technologies/languages",
         "produces": [
           "application/json"
         ],
@@ -296,6 +297,7 @@
         "tags": [
           "Technologies"
         ],
+        "summary": "Create technology",
         "description": "",
         "parameters": [
           {
@@ -347,6 +349,7 @@
         "tags": [
           "Technologies"
         ],
+        "summary": "Find technology by ID",
         "description": "Request technology by ID",
         "produces": [
           "application/json"
@@ -375,6 +378,7 @@
         "tags": [
           "Technologies"
         ],
+        "summary": "Updates technology by ID",
         "description": "",
         "parameters": [
           {
@@ -430,6 +434,7 @@
         "tags": [
           "Technologies"
         ],
+        "summary": "Deletes a technology by ID",
         "description": "Delete existing technology (Requires user to be logged in)",
         "parameters": [
           {
