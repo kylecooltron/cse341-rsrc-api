@@ -6,5 +6,6 @@ routes.use('/', require('./route.users'));
 routes.use('/resources', require('./route.resources'));
 routes.use('/technologies', require('./route.technologies'));
 routes.use('/tags', require('./route.tags'));
+routes.use('/users', require('./route.users'));
 
 module.exports = routes;
