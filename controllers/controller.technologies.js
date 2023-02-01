@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator');
 const { technologyModel } = require('../models/model.technology');
 
 const getAllTechnologies = async (req, res) => {
+	// #swagger.tags = ['Technologies'],
 	// #swagger.description = 'Request list of all languages-technologies'
 	try {
 		const errors = validationResult(req);
@@ -33,6 +34,7 @@ const getAllTechnologies = async (req, res) => {
 };
 
 const getTechnologyById = async (req, res) => {
+	// #swagger.tags = ['Technologies'],
 	// #swagger.description = 'Request technology by ID'
 	try {
 		const errors = validationResult(req);
@@ -65,6 +67,7 @@ const getTechnologyById = async (req, res) => {
 };
 
 const createTechnology = async (req, res) => {
+	// #swagger.tags = ['Technologies'],
 	/*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: 'Create new technology (Requires user to be logged in)',
@@ -117,6 +120,7 @@ const createTechnology = async (req, res) => {
 };
 
 const deleteTechnology = async (req, res) => {
+	// #swagger.tags = ['Technologies'],
 	// #swagger.description = 'Delete existing technology (Requires user to be logged in)'
 	try {
 		if (!req.oidc.isAuthenticated()) {
@@ -151,6 +155,7 @@ const deleteTechnology = async (req, res) => {
 };
 
 const updateTechnology = async (req, res) => {
+	// #swagger.tags = ['Technologies'],
 	/*    #swagger.parameters['obj'] = {
               in: 'body',
               description: 'Update existing technology (Requires user to be logged in)',
@@ -172,8 +177,6 @@ const updateTechnology = async (req, res) => {
 		if (!errors.isEmpty()) {
 			return res.status(422).json({ errors: errors.array() });
 		}
-
-		// attempt to get previous values for date_created and likes
 
 		let date_created = null;
 		const alreadyExists = await mongodb

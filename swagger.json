@@ -5,14 +5,31 @@
     "description": "Class Resource Sharing API <hr>\n        <br>Note: Some features require user to be authenticated.</br>\n        To login navigate to <a href='/login' target=\"_blank\">Login</a>\n        To log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
     "version": "1.0.0"
   },
-  "host": "cse341-rsrc-api.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Resources",
+      "description": "Get All Resources"
+    },
+    {
+      "name": "Technologies",
+      "description": "Get All Technologies / Languages"
+    },
+    {
+      "name": "Tags",
+      "description": "Get All Tags"
+    }
+  ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/resources/": {
       "get": {
+        "tags": [
+          "Resources"
+        ],
         "description": "Request list of all resources",
         "produces": [
           "application/json"
@@ -31,6 +48,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Resources"
+        ],
         "description": "",
         "parameters": [
           {
@@ -109,6 +129,9 @@
     },
     "/resources/{id}": {
       "get": {
+        "tags": [
+          "Resources"
+        ],
         "description": "Request resource by ID",
         "produces": [
           "application/json"
@@ -134,6 +157,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Resources"
+        ],
         "description": "",
         "parameters": [
           {
@@ -216,6 +242,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Resources"
+        ],
         "description": "Delete existing resource (Requires user to be logged in)",
         "parameters": [
           {
@@ -243,6 +272,9 @@
     },
     "/technologies/": {
       "get": {
+        "tags": [
+          "Technologies"
+        ],
         "description": "Request list of all languages-technologies",
         "produces": [
           "application/json"
@@ -261,6 +293,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Technologies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -309,6 +344,9 @@
     },
     "/technologies/{id}": {
       "get": {
+        "tags": [
+          "Technologies"
+        ],
         "description": "Request technology by ID",
         "produces": [
           "application/json"
@@ -334,6 +372,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Technologies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -386,6 +427,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Technologies"
+        ],
         "description": "Delete existing technology (Requires user to be logged in)",
         "parameters": [
           {
@@ -413,6 +457,9 @@
     },
     "/tags/": {
       "get": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Request list of all Tags",
         "produces": [
           "application/json"
@@ -431,6 +478,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Tags"
+        ],
         "description": "",
         "parameters": [
           {
@@ -475,6 +525,9 @@
     },
     "/tags/{id}": {
       "get": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Request Tag by ID",
         "produces": [
           "application/json"
@@ -500,6 +553,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Tags"
+        ],
         "description": "",
         "parameters": [
           {
@@ -548,6 +604,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {
