@@ -75,9 +75,9 @@ const createTag = async (req, res) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.title });
+    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.name });
     if (alreadyExists) {
-      throw new Error(`Tag with title already exists: ${req.body.title}`);
+      throw new Error(`Tag with name already exists: ${req.body.name}`);
     }
 
     const tag = {
@@ -155,15 +155,6 @@ const updateTag = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
-    }
-
-    // attempt to get previous values for date_created and likes
-    let date_created = null;
-    let likes = 0;
-    const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.title });
-    if (alreadyExists) {
-      date_created = alreadyExists.date_created;
-      likes = alreadyExists.likes;
     }
 
     const tag = {
