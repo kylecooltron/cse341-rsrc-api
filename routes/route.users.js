@@ -6,8 +6,8 @@ const routes = require('express').Router();
 const usersController = require('../controllers/controller.users');
 
 // get all users
-routes.get('/users', usersController.getAllUsers);
+routes.get('/', usersController.getAllUsers);
 // checks login state and saves user info
-routes.get('/', usersController.isAuthenticated /* #swagger.ignore = true */);
+routes.get('/auth', usersController.isAuthenticated /* #swagger.ignore = true */);
 
 module.exports = routes;
