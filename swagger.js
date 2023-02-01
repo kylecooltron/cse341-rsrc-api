@@ -33,10 +33,6 @@ const doc = {
 			name: 'Tags',
 			description: '',
 		},
-		{
-			name: 'Users',
-			description: '',
-		},
 	],
 	// securityDefinitions: {
 	// 	auth0: {
