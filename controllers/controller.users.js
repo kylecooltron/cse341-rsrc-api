@@ -46,4 +46,4 @@ const isAuthenticated = async (req, res) => {
     }
 };
 
-module.exports = { isAuthenticated,getAllUsers };
+module.exports = { isAuthenticated };
