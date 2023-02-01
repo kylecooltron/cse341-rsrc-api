@@ -1,0 +1,34 @@
+// LOCALHOST
+###
+GET http://localhost:3000/technologies
+###
+GET http://localhost:3000/technologies/63d7b9e6992bb2c2e515b0c6
+
+### Create new technology - space is critical on line 10, do not delete!
+POST http://localhost:3000/technologies HTTP/1.1 
+content-type: application/json
+
+{       
+    "name": "Test Technology Name 4.0",
+    "description": "description",
+    "category": "programming language",
+    "date_created": "",
+    "last_modified": ""
+}
+
+### PUT Update technology details
+PUT http://localhost:3000/technologies/63d7ba02992bb2c2e515b0c7 HTTP/1.1 
+content-type: application/json
+
+{       
+    "name": "Test Technology Name 3.2",
+    "description": "description",
+    "category": "programming language",
+    "date_created": "",
+    "last_modified": ""
+}
+
+### DELETE technology
+DELETE http://localhost:3000/technologies/63d7ba02992bb2c2e515b0c7 HTTP/1.1
+
+
