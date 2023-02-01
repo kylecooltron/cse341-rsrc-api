@@ -19,12 +19,40 @@
     {
       "name": "Tags",
       "description": ""
+    },
+    {
+      "name": "Users",
+      "description": ""
     }
   ],
   "schemes": [
     "https"
   ],
   "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Return list of Users",
+        "description": "Request list of all Users",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/resources/": {
       "get": {
         "tags": [
