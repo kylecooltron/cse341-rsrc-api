@@ -2,17 +2,63 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 RSCS API",
-    "description": "Class Resource Sharing API <hr>\n        <br>Note: Some features require user to be authenticated.</br>\n        To login navigate to <a href='/login' target=\"_blank\">Login</a>\n        To log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
+    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a><hr>\n\t\t\t<b>Authors:</b>Kyle Coulon, A. Michael Sierra, Robert Odell\n\t\t\tFor assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>\n\t\t\t ",
     "version": "1.0.0"
   },
   "host": "cse341-rsrc-api.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Resources",
+      "description": ""
+    },
+    {
+      "name": "Technologies",
+      "description": ""
+    },
+    {
+      "name": "Tags",
+      "description": ""
+    },
+    {
+      "name": "Users",
+      "description": ""
+    }
+  ],
   "schemes": [
     "https"
   ],
   "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Return list of Users",
+        "description": "Request list of all Users",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/resources/": {
       "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Return list of resources",
         "description": "Request list of all resources",
         "produces": [
           "application/json"
@@ -31,6 +77,10 @@
         }
       },
       "post": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Create resource",
         "description": "",
         "parameters": [
           {
@@ -95,6 +145,9 @@
           "201": {
             "description": "Created"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -106,6 +159,10 @@
     },
     "/resources/{id}": {
       "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Find resource by ID",
         "description": "Request resource by ID",
         "produces": [
           "application/json"
@@ -131,6 +188,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Updates resource by ID",
         "description": "",
         "parameters": [
           {
@@ -201,6 +262,9 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -210,6 +274,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Deletes resource by ID",
         "description": "Delete existing resource (Requires user to be logged in)",
         "parameters": [
           {
@@ -223,6 +291,9 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -234,7 +305,11 @@
     },
     "/technologies/": {
       "get": {
-        "description": "Request list of all languages-technologies",
+        "tags": [
+          "Technologies"
+        ],
+        "summary": "Return list of technologies/languages",
+        "description": "Request list of all technologies/languages",
         "produces": [
           "application/json"
         ],
@@ -252,6 +327,10 @@
         }
       },
       "post": {
+        "tags": [
+          "Technologies"
+        ],
+        "summary": "Create technology",
         "description": "",
         "parameters": [
           {
@@ -300,6 +379,10 @@
     },
     "/technologies/{id}": {
       "get": {
+        "tags": [
+          "Technologies"
+        ],
+        "summary": "Find technology by ID",
         "description": "Request technology by ID",
         "produces": [
           "application/json"
@@ -325,6 +408,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Technologies"
+        ],
+        "summary": "Updates technology by ID",
         "description": "",
         "parameters": [
           {
@@ -377,7 +464,193 @@
         }
       },
       "delete": {
+        "tags": [
+          "Technologies"
+        ],
+        "summary": "Deletes technology by ID",
         "description": "Delete existing technology (Requires user to be logged in)",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/tags/": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Return list of tags",
+        "description": "Request list of all Tags",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Create tag",
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create new tag (Requires user to be logged in)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test tag name"
+                },
+                "usage": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                }
+              },
+              "required": [
+                "name",
+                "usage"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/tags/{id}": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Find tag by ID",
+        "description": "Request Tag by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Updates tag by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Update existing tag (Requires user to be logged in)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test tag name"
+                },
+                "usage": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                }
+              },
+              "required": [
+                "name",
+                "usage"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Deletes tag by ID",
+        "description": "Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {
             "name": "id",

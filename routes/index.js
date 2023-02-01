@@ -5,5 +5,6 @@ routes.use('/', require('./route.users'));
 // handles resource get, post, put, delete requests
 routes.use('/resources', require('./route.resources'));
 routes.use('/technologies', require('./route.technologies'));
+routes.use('/tags', require('./route.tags'));
 
 module.exports = routes;
