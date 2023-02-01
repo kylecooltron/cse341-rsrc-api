@@ -20,15 +20,15 @@ const doc = {
 	tags: [
 		{
 			name: 'Resources',
-			description: 'Get All Resources',
+			description: '',
 		},
 		{
 			name: 'Technologies',
-			description: 'Get All Technologies / Languages',
+			description: '',
 		},
 		{
 			name: 'Tags',
-			description: 'Get All Tags',
+			description: '',
 		},
 	],
 	// securityDefinitions: {
