@@ -5,7 +5,7 @@
     "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-rsrc-api.onrender.com",
   "basePath": "/",
   "tags": [
     {
@@ -22,7 +22,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/resources/": {
@@ -30,6 +30,7 @@
         "tags": [
           "Resources"
         ],
+        "summary": "Return list of resources",
         "description": "Request list of all resources",
         "produces": [
           "application/json"
@@ -51,6 +52,7 @@
         "tags": [
           "Resources"
         ],
+        "summary": "Create resource",
         "description": "",
         "parameters": [
           {
@@ -132,6 +134,7 @@
         "tags": [
           "Resources"
         ],
+        "summary": "Find resource by ID",
         "description": "Request resource by ID",
         "produces": [
           "application/json"
@@ -160,6 +163,7 @@
         "tags": [
           "Resources"
         ],
+        "summary": "Updates resource by ID",
         "description": "",
         "parameters": [
           {
@@ -245,6 +249,7 @@
         "tags": [
           "Resources"
         ],
+        "summary": "Deletes resource by ID",
         "description": "Delete existing resource (Requires user to be logged in)",
         "parameters": [
           {
@@ -434,7 +439,7 @@
         "tags": [
           "Technologies"
         ],
-        "summary": "Deletes a technology by ID",
+        "summary": "Deletes technology by ID",
         "description": "Delete existing technology (Requires user to be logged in)",
         "parameters": [
           {
@@ -465,6 +470,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Return list of tags",
         "description": "Request list of all Tags",
         "produces": [
           "application/json"
@@ -486,6 +492,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Create tag",
         "description": "",
         "parameters": [
           {
@@ -533,6 +540,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Find tag by ID",
         "description": "Request Tag by ID",
         "produces": [
           "application/json"
@@ -561,6 +569,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Updates tag by ID",
         "description": "",
         "parameters": [
           {
@@ -612,6 +621,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Deletes tag by ID",
         "description": "Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {

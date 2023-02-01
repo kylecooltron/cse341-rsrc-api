@@ -7,6 +7,7 @@ const { validationResult } = require('express-validator');
 const getAllTags = async (req, res) => {
 	// #swagger.tags = ['Tags'],
 	// #swagger.description = 'Request list of all Tags'
+	// #swagger.summary = 'Return list of tags'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -35,6 +36,7 @@ const getAllTags = async (req, res) => {
 const getTagById = async (req, res) => {
 	// #swagger.tags = ['Tags'],
 	// #swagger.description = 'Request Tag by ID'
+	// #swagger.summary = 'Find tag by ID'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -67,6 +69,7 @@ const getTagById = async (req, res) => {
 
 const createTag = async (req, res) => {
 	// #swagger.tags = ['Tags'],
+	// #swagger.summary = 'Create tag',
 	/*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: 'Create new tag (Requires user to be logged in)',
@@ -120,6 +123,7 @@ const createTag = async (req, res) => {
 const deleteTag = async (req, res) => {
 	// #swagger.tags = ['Tags'],
 	// #swagger.description = 'Delete existing tag (Requires user to be logged in)'
+	// #swagger.summary = 'Deletes tag by ID'
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(
@@ -154,6 +158,7 @@ const deleteTag = async (req, res) => {
 
 const updateTag = async (req, res) => {
 	// #swagger.tags = ['Tags'],
+	// #swagger.summary = 'Updates tag by ID'
 	/*    #swagger.parameters['obj'] = {
               in: 'body',
               description: 'Update existing tag (Requires user to be logged in)',

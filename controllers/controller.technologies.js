@@ -70,7 +70,7 @@ const getTechnologyById = async (req, res) => {
 
 const createTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
-	// #swagger.summary = 'Create technology'
+	// #swagger.summary = 'Create technology',
 	/*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: 'Create new technology (Requires user to be logged in)',
@@ -124,7 +124,7 @@ const createTechnology = async (req, res) => {
 
 const deleteTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
-	// #swagger.summary = 'Deletes a technology by ID'
+	// #swagger.summary = 'Deletes technology by ID'
 	// #swagger.description = 'Delete existing technology (Requires user to be logged in)'
 	try {
 		if (!req.oidc.isAuthenticated()) {

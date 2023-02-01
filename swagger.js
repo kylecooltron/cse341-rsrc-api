@@ -1,3 +1,5 @@
+const { header } = require('express-validator');
+
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
@@ -11,10 +13,10 @@ const doc = {
 			To log out navigate to <a href='/logout' target="_blank">Log Out</a>`,
 	},
 	// URL for localhost
-	host: 'localhost:3000',
-	schemes: ['http'],
-	// host: 'cse341-rsrc-api.onrender.com',
-	// schemes: ['https']
+	// host: 'localhost:3000',
+	// schemes: ['http'],
+	host: 'cse341-rsrc-api.onrender.com',
+	schemes: ['https'],
 	tags: [
 		{
 			name: 'Resources',
@@ -29,6 +31,19 @@ const doc = {
 			description: 'Get All Tags',
 		},
 	],
+	// securityDefinitions: {
+	// 	auth0: {
+	// 		type: 'bearer',
+	// 		in: 'header',
+	// 		flow: 'accessCode',
+	// 		authorizationUrl:
+	// 			'https://dev-um52c854zc307eqz.us.auth0.com/authorize',
+	// 		flow: 'implicit',
+	// 		scopes: {
+	// 			openid: 'Grant access to user',
+	// 		},
+	// 	},
+	// },
 };
 
 const outputFile = './swagger.json';

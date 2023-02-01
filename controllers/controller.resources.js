@@ -7,6 +7,7 @@ const { validationResult } = require('express-validator');
 const getAllResources = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.description = 'Request list of all resources'
+	// #swagger.summary = 'Return list of resources'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -35,6 +36,7 @@ const getAllResources = async (req, res) => {
 const getResourceById = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.description = 'Request resource by ID'
+	// #swagger.summary = 'Find resource by ID'
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -67,6 +69,7 @@ const getResourceById = async (req, res) => {
 
 const createResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
+	// #swagger.summary = 'Create resource',
 	/*    #swagger.parameters['obj'] = {
                 in: 'body',
                 description: 'Create new resource (Requires user to be logged in)',
@@ -138,6 +141,7 @@ const createResource = async (req, res) => {
 const deleteResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.description = 'Delete existing resource (Requires user to be logged in)'
+	// #swagger.summary = 'Deletes resource by ID'
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(
@@ -172,6 +176,7 @@ const deleteResource = async (req, res) => {
 
 const updateResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
+	// #swagger.summary = 'Updates resource by ID'
 	/*    #swagger.parameters['obj'] = {
               in: 'body',
               description: 'Update existing resource (Requires user to be logged in)',
