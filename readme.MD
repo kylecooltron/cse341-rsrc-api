@@ -5,6 +5,9 @@ Project Description -Class Resources API-
 
 Authors:
 Kyle Coulon - kylecooltron.github.io
+Michael Sierra
+Robert Odell
+
 The Class Resources API will provide access to resources that students find helpful when completing the CSE341 course. Authorized users will also be allowed to POST/PUT/DELETE resources, tags, and technology documents from the database through various API Requests. There will be a front-end that includes documentation about each route/request, and will also provide additional information and links about authorization.
 
 
