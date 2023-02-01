@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 RSCS API",
-    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a>",
+    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a><hr>\n\t\t\t<b>Authors:</b>Kyle Coulon, A. Michael Sierra, Robert Odell\n\t\t\tFor assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>\n\t\t\t ",
     "version": "1.0.0"
   },
   "host": "cse341-rsrc-api.onrender.com",
