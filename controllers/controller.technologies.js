@@ -72,15 +72,17 @@ const createTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
 	// #swagger.summary = 'Create technology',
 	/*    #swagger.parameters['obj'] = {
-                in: 'body',
-                description: 'Create new technology (Requires user to be logged in)',
-                schema: {
-                    $name: 'Test Technology Name 1.0',
-                    $description: 'description',
-                    $category: 'programming language'
-                }
-        } */
-
+				in: 'body',
+				description: '🔒 Create new technology (Requires user to be logged in)',
+				schema: {
+					$name: 'Test Technology Name 1.0',
+					$description: 'description',
+					$category: 'programming language'
+				}
+		} */
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -111,7 +113,7 @@ const createTechnology = async (req, res) => {
 		} else {
 			throw new Error(
 				response.error ||
-					'Some error occurred while creating the technology.'
+				'Some error occurred while creating the technology.'
 			);
 		}
 	} catch (err) {
@@ -125,7 +127,10 @@ const createTechnology = async (req, res) => {
 const deleteTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
 	// #swagger.summary = 'Deletes technology by ID'
-	// #swagger.description = 'Delete existing technology (Requires user to be logged in)'
+	// #swagger.description = '🔒 Delete existing technology (Requires user to be logged in)'
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(
@@ -162,15 +167,17 @@ const updateTechnology = async (req, res) => {
 	// #swagger.tags = ['Technologies'],
 	// #swagger.summary = 'Updates technology by ID'
 	/*    #swagger.parameters['obj'] = {
-              in: 'body',
-              description: 'Update existing technology (Requires user to be logged in)',
-              schema: {
-                    $name: 'Test Technology Name 1.0',
-                    $description: 'description',
-                    $category: 'programming language'
-              }
-      } */
-
+			  in: 'body',
+			  description: '🔒 Update existing technology (Requires user to be logged in)',
+			  schema: {
+					$name: 'Test Technology Name 1.0',
+					$description: 'description',
+					$category: 'programming language'
+			  }
+	  } */
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(

@@ -5,8 +5,19 @@ const { validationResult } = require('express-validator');
 
 const getAllUsers = async (req, res) => {
     // #swagger.tags = ['Users']
-    // #swagger.description = 'Request list of all Users'
+    // #swagger.description = '🔒 Request list of all Users (Must be logged in)'
+    // #swagger.summary = 'Return list of users'
+    /* #swagger.security = [{
+               "Basic": []
+        }] */
     try {
+
+        if (!req.oidc.isAuthenticated()) {
+            throw new Error(
+                `Not authorized to see users list, please log in at /login `
+            );
+        }
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });

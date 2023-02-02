@@ -7,6 +7,6 @@ const usersController = require('../controllers/controller.users');
 
 
 // checks login state and saves user info
-routes.get('/', usersController.getAllUsers );
+routes.get('/', usersController.getAllUsers);
 
 module.exports = routes;

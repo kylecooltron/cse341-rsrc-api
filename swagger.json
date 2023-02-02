@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 RSCS API",
-    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and\n\t\t\tcreate or find resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a><hr>\n\t\t\t<b>Authors:</b>Kyle Coulon, A. Michael Sierra, Robert Odell\n\t\t\tFor assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>\n\t\t\t ",
+    "description": "<b>Class Resource Sharing API</b> <hr>\n\t\t\tThis API would allow people enrolled in the class to log in, and <b>create</b> or <b>find</b> resources related to various subjects in the class.\n\t\t\t<br><i><font color=\"gray\">Note: Some features require user to be authenticated.</font></i></br>\n\t\t\tTo login navigate to <a href='/login' target=\"_blank\">Login</a>\n\t\t\tTo log out navigate to <a href='/logout' target=\"_blank\">Log Out</a><hr>\n\t\t\t<div style=\"font-size:1.1em;\"><b>Authors:</b>  Kyle Coulon, A. Michael Sierra, Robert Odell</div>\n\t\t\tFor assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>\n\t\t\t ",
     "version": "1.0.0"
   },
   "host": "cse341-rsrc-api.onrender.com",
@@ -62,7 +62,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Create new resource (Requires user to be logged in)",
+            "description": "🔒 Create new resource (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -130,7 +130,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/resources/{id}": {
@@ -179,7 +184,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Update existing resource (Requires user to be logged in)",
+            "description": "🔒 Update existing resource (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -247,14 +252,19 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       },
       "delete": {
         "tags": [
           "Resources"
         ],
         "summary": "Deletes resource by ID",
-        "description": "Delete existing resource (Requires user to be logged in)",
+        "description": "🔒 Delete existing resource (Requires user to be logged in)",
         "parameters": [
           {
             "name": "id",
@@ -276,7 +286,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/technologies/": {
@@ -312,7 +327,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Create new technology (Requires user to be logged in)",
+            "description": "🔒 Create new technology (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -350,7 +365,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/technologies/{id}": {
@@ -399,7 +419,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Update existing technology (Requires user to be logged in)",
+            "description": "🔒 Update existing technology (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -437,14 +457,19 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       },
       "delete": {
         "tags": [
           "Technologies"
         ],
         "summary": "Deletes technology by ID",
-        "description": "Delete existing technology (Requires user to be logged in)",
+        "description": "🔒 Delete existing technology (Requires user to be logged in)",
         "parameters": [
           {
             "name": "id",
@@ -466,7 +491,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/tags/": {
@@ -500,7 +530,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Create new tag (Requires user to be logged in)",
+            "description": "🔒 Create new tag (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -531,7 +561,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/tags/{id}": {
@@ -578,7 +613,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Update existing tag (Requires user to be logged in)",
+            "description": "🔒 Update existing tag (Requires user to be logged in)",
             "schema": {
               "type": "object",
               "properties": {
@@ -609,13 +644,18 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       },
       "delete": {
         "tags": [
           "Tags"
         ],
-        "description": "Delete existing tag (Requires user to be logged in)",
+        "description": "🔒 Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {
             "name": "id",
@@ -634,7 +674,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     },
     "/users/": {
@@ -642,7 +687,8 @@
         "tags": [
           "Users"
         ],
-        "description": "Request list of all Users",
+        "summary": "Return list of users",
+        "description": "🔒 Request list of all Users (Must be logged in)",
         "produces": [
           "application/json"
         ],
@@ -657,7 +703,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Basic": []
+          }
+        ]
       }
     }
   }

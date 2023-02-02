@@ -36,7 +36,7 @@ const getAllResources = async (req, res) => {
 const getResourceById = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.description = 'Request resource by ID'
-	// #swagger.summary = 'Find resource by ID'
+	// #swagger.summary = 'Find resource by ID'\
 	try {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -71,21 +71,31 @@ const createResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.summary = 'Create resource',
 	/*    #swagger.parameters['obj'] = {
-                in: 'body',
-                description: 'Create new resource (Requires user to be logged in)',
-                schema: {
-                    $title: 'Test Resource Title 1.0',
-                    $subject: 'Test Resource Subject',
-                    $description: 'description',
-                    $lesson_numbers: [],
-                    $links: [],
-                    $search_tags: [],
-                    $contributing_students: [],
-                    $featured_technologies: [],
-                }
-        } */
+				in: 'body',
+				description: '🔒 Create new resource (Requires user to be logged in)',
+				schema: {
+					$title: 'Test Resource Title 1.0',
+					$subject: 'Test Resource Subject',
+					$description: 'description',
+					$lesson_numbers: [],
+					$links: [],
+					$search_tags: [],
+					$contributing_students: [],
+					$featured_technologies: [],
+				}
+		} */
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 
 	try {
+
+		if (!req.oidc.isAuthenticated()) {
+			throw new Error(
+				`Not authorized to delete resources, please log in at /login `
+			);
+		}
+
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(422).json({ errors: errors.array() });
@@ -140,8 +150,11 @@ const createResource = async (req, res) => {
 
 const deleteResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
-	// #swagger.description = 'Delete existing resource (Requires user to be logged in)'
+	// #swagger.description = '🔒 Delete existing resource (Requires user to be logged in)'
 	// #swagger.summary = 'Deletes resource by ID'
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(
@@ -178,20 +191,22 @@ const updateResource = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.summary = 'Updates resource by ID'
 	/*    #swagger.parameters['obj'] = {
-              in: 'body',
-              description: 'Update existing resource (Requires user to be logged in)',
-              schema: {
-                  $title: 'Test Resource Title 1.0',
-                  $subject: 'Test Resource Subject',
-                  $description: 'description',
-                  $lesson_numbers: [],
-                  $links: [],
-                  $search_tags: [],
-                  $contributing_students: [],
-                  $featured_technologies: [],
-              }
-      } */
-
+			  in: 'body',
+			  description: '🔒 Update existing resource (Requires user to be logged in)',
+			  schema: {
+				  $title: 'Test Resource Title 1.0',
+				  $subject: 'Test Resource Subject',
+				  $description: 'description',
+				  $lesson_numbers: [],
+				  $links: [],
+				  $search_tags: [],
+				  $contributing_students: [],
+				  $featured_technologies: [],
+			  }
+	  } */
+	/* #swagger.security = [{
+			   "Basic": []
+		}] */
 	try {
 		if (!req.oidc.isAuthenticated()) {
 			throw new Error(

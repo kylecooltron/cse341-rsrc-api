@@ -65,13 +65,15 @@ const createTag = async (req, res) => {
   // #swagger.tags = ['Tags']
   /*    #swagger.parameters['obj'] = {
                 in: 'body',
-                description: 'Create new tag (Requires user to be logged in)',
+                description: '🔒 Create new tag (Requires user to be logged in)',
                 schema: {
                     $name: 'Test tag name',
                     $usage: []
                 }
         } */
-
+  /* #swagger.security = [{
+               "Basic": []
+        }] */
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -108,7 +110,10 @@ const createTag = async (req, res) => {
 
 const deleteTag = async (req, res) => {
   // #swagger.tags = ['Tags']
-  // #swagger.description = 'Delete existing tag (Requires user to be logged in)'
+  // #swagger.description = '🔒 Delete existing tag (Requires user to be logged in)'
+  /* #swagger.security = [{
+               "Basic": []
+        }] */
   try {
 
     if (!req.oidc.isAuthenticated()) {
@@ -144,13 +149,15 @@ const updateTag = async (req, res) => {
   // #swagger.tags = ['Tags']
   /*    #swagger.parameters['obj'] = {
               in: 'body',
-              description: 'Update existing tag (Requires user to be logged in)',
+              description: '🔒 Update existing tag (Requires user to be logged in)',
               schema: {
                   $name: 'Test tag name',
                     $usage: []
               }
       } */
-
+  /* #swagger.security = [{
+               "Basic": []
+        }] */
   try {
 
     if (!req.oidc.isAuthenticated()) {

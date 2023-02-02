@@ -6,12 +6,11 @@ const doc = {
 	info: {
 		title: 'CSE 341 RSCS API',
 		description: `<b>Class Resource Sharing API</b> <hr>
-			This API would allow people enrolled in the class to log in, and
-			create or find resources related to various subjects in the class.
+			This API would allow people enrolled in the class to log in, and <b>create</b> or <b>find</b> resources related to various subjects in the class.
 			<br><i><font color="gray">Note: Some features require user to be authenticated.</font></i></br>
 			To login navigate to <a href='/login' target="_blank">Login</a>
 			To log out navigate to <a href='/logout' target="_blank">Log Out</a><hr>
-			<b>Authors:</b>Kyle Coulon, A. Michael Sierra, Robert Odell
+			<div style="font-size:1.1em;"><b>Authors:</b>  Kyle Coulon, A. Michael Sierra, Robert Odell</div>
 			For assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>
 			 `,
 	},
