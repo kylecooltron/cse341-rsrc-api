@@ -5,6 +5,8 @@ const mongodb = require('./db/connect');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const path = require('path');
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -30,6 +32,7 @@ app.use(auth(config))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  .use('/', express.static(path.join(__dirname, "./view")))
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(

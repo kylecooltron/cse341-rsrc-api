@@ -1,7 +1,10 @@
 const routes = require('express').Router();
 
-// Base route returns login state and saves user data
-routes.use('/', require('./route.auth'));
+// Note: base route presents app from the view folder (custom front-end), see server.js
+
+// Auth0 redirects to /auth as callback
+routes.use('/auth', require('./route.auth'));
+
 // handles resource get, post, put, delete requests
 routes.use('/resources', require('./route.resources'));
 routes.use('/technologies', require('./route.technologies'));
