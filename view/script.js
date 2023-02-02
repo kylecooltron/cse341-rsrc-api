@@ -94,18 +94,20 @@ const get_authentication_status = async () => {
      * This method will also save the users data to the database
      */
     try {
+        let res;
         await fetch(`https://cse341-rsrc-api.onrender.com/auth`)
             .then(response => response.json())
             .then(response => {
-                if (response.authorized) {
-                    return {
-                        name: response.name,
-                        profile_id: response.profile_id
-                    };
-                } else {
-                    return false;
-                }
+                res = response;
             })
+        if (res.authorized) {
+            return {
+                name: res.name,
+                profile_id: res.profile_id
+            };
+        } else {
+            return false;
+        }
     } catch (err) {
         console.log(err);
         return false;
@@ -194,6 +196,7 @@ window.onload = async () => {
 
     // check if user is authenticated
     const authenticated_user = await get_authentication_status();
+    console.log(authenticated_user);
     set_auth_bar_style(authenticated_user);
     set_login_button(authenticated_user);
 
