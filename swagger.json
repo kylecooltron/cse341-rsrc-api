@@ -471,6 +471,9 @@
     },
     "/tags/": {
       "get": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Request list of all Tags",
         "produces": [
           "application/json"
@@ -489,6 +492,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Tags"
+        ],
         "description": "",
         "parameters": [
           {
@@ -530,6 +536,9 @@
     },
     "/tags/{id}": {
       "get": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Request Tag by ID",
         "produces": [
           "application/json"
@@ -555,6 +564,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Tags"
+        ],
         "description": "",
         "parameters": [
           {
@@ -600,6 +612,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Tags"
+        ],
         "description": "Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {
@@ -624,6 +639,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "Request list of all Users",
         "produces": [
           "application/json"
