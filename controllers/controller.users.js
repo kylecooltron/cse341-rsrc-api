@@ -2,6 +2,28 @@ const mongodb = require('../db/connect');
 const database = "cse341-rsrc-database";
 const collection = "users";
 
+const getAllUsers = async (req, res) => {
+    // #swagger.description = 'Request list of all Users'
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+      }
+  
+      await mongodb.getDb().db(database).collection(collection).find().toArray((err, list) => {
+        if (err) {
+          res.status(500).send({
+            error: `Cannot convert to array: ${err}`,
+          });
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(list);
+      });
+  
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 
 const isAuthenticated = async (req, res) => {
     // # swagger.ignore = true
@@ -46,4 +68,4 @@ const isAuthenticated = async (req, res) => {
     }
 };
 
-module.exports = { isAuthenticated };
+module.exports = { isAuthenticated,getAllUsers };

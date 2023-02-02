@@ -19,6 +19,10 @@
     {
       "name": "Tags",
       "description": ""
+    },
+    {
+      "name": "Users",
+      "description": ""
     }
   ],
   "schemes": [
@@ -608,6 +612,26 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "description": "Request list of all Users",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "422": {
             "description": "Unprocessable Entity"
