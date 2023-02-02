@@ -68,7 +68,9 @@ const isAuthenticated = async (req, res) => {
             // send response
             res.status(200).json({
                 "authorized": true,
-                "message": msg
+                "message": msg,
+                "name": user_profile_info.name,
+                "profile_id": user_profile_info.profile_id,
             });
 
         } else {

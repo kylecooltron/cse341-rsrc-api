@@ -44,7 +44,7 @@
         <h2>Create New Resource</h2>
     </div>
 
-    <form class="resource-form" method="POST" action="https://cse341-rsrc-api.onrender.com/resources">
+    <div class="resource-form">
         <!-- form would need to be finished with all required fields -->
         <div class="form-group">
             <label for="formTitle">Title</label>
@@ -77,9 +77,12 @@
 
         <!-- contributing author should be a hidden field that is populated by javascript using the current users id -->
 
-        <input type="submit" value="Create">
-    </form>
+        <!-- do not use usual form with input type=submit button and method/action, it will change the url
+            we want a custom submit button that we can add a listener to in javascript -->
+        <button class="btn btn-primary" id="create-submit">Create Resource</button>
+    </div>
 
 </body>
+<script src="script.js"></script>
 
 </html>

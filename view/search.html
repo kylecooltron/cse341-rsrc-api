@@ -43,22 +43,22 @@
 
         <h2>Search</h2>
 
-        <form method="POST" action="https://cse341-rsrc-api.onrender.com/search">
 
-            <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" placeholder="type here" />
-                </div>
+        <div class="input-group">
+            <div class="form-outline">
+                <input type="search" id="search-text-input" class="form-control" placeholder="type here" />
+            </div>
 
-                <!--  you would want to add filters or search by options here and pass them to the search route
+            <!--  you would want to add filters or search by options here and pass them to the search route
             That way you can have all searches (Tags, Resources, Technologies) all point to the same route
             and then give different result depending on the filter/search by options -->
 
-                <input type="submit" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-                </input>
-            </div>
-        </form>
+
+            <!-- do not use usual input type=submit button and form action, it will change the url
+            we want a custom submit button that we can add a listener to in javascript -->
+            <button class="btn btn-primary" id="search-submit"><i class="fas fa-search"></i></button>
+        </div>
+
 
         <div class="search-container">
             <div id="results-count">No Matching Results</div>
@@ -71,5 +71,6 @@
 
 
 </body>
+<script src="script.js"></script>
 
 </html>
