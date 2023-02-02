@@ -1,0 +1,16 @@
+
+@local = http://localhost:3000
+@render = https://cse341-rsrc-api.onrender.com
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - LOCAL HOST
+
+### list all Resources
+{{local}}/users
+
+
+// - - - - - - - - - - - - - - - - - - - - - RENDER
+
+### list all resources
+{{render}}/users

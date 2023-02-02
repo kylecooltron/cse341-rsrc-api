@@ -1,6 +1,6 @@
 
 @local = http://localhost:3000
-@render = replace!
+@render = https://cse341-rsrc-api.onrender.com
 
 
 
