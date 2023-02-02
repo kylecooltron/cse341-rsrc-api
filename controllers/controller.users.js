@@ -3,6 +3,7 @@ const database = "cse341-rsrc-database";
 const collection = "users";
 
 const getAllUsers = async (req, res) => {
+    // #swagger.tags = ['Users']
     // #swagger.description = 'Request list of all Users'
     try {
       const errors = validationResult(req);
