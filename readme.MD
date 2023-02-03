@@ -43,8 +43,8 @@ ROBERT:
         ✔️Make Controller
         ✔️Set up express-validator for POST & PUT
         ✔️Add authorization requirement to certain routes
-        Write unit tests for tags handlers
-        Ensure tags requests are available and descriptions/example data is provided on Swagger UI
+        ✔️Write unit tests for tags handlers
+        ✔️Ensure tags requests are available and descriptions/example data is provided on Swagger UI
 
 MICHAEL:
 
