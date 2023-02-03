@@ -16,7 +16,6 @@ routes.get('/:id', validateDocumentID, tagController.getTagById);
 routes.post(
 	'/',
 	checkAccess,
-	validateDocumentID,
 	validateTag,
 	checkValidationResult,
 	tagController.createTag
