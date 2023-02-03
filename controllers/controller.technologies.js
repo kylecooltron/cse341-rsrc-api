@@ -2,7 +2,6 @@ const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
 const database = 'cse341-rsrc-database';
 const collection = 'technologies';
-const { validationResult } = require('express-validator');
 const { technologyModel } = require('../models/model.technology');
 
 const getAllTechnologies = async (req, res) => {
@@ -34,7 +33,7 @@ const getTechnologyById = async (req, res) => {
 	// #swagger.description = 'Request technology by ID'
 	// #swagger.summary = 'Find technology by ID'
 	try {
-		const techology = await mongodb
+		const technology = await mongodb
 			.getDb()
 			.db(database)
 			.collection(collection)
@@ -98,7 +97,7 @@ const createTechnology = async (req, res) => {
 		} else {
 			throw new Error(
 				response.error ||
-				'Some error occurred while creating the technology.'
+					'Some error occurred while creating the technology.'
 			);
 		}
 	} catch (err) {
