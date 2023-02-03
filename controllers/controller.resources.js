@@ -2,18 +2,12 @@ const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
 const database = 'cse341-rsrc-database';
 const collection = 'resources';
-const { validationResult } = require('express-validator');
 
 const getAllResources = async (req, res) => {
 	// #swagger.tags = ['Resources'],
 	// #swagger.description = 'Request list of all resources'
 	// #swagger.summary = 'Return list of resources'
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		await mongodb
 			.getDb()
 			.db(database)
@@ -38,11 +32,7 @@ const getResourceById = async (req, res) => {
 	// #swagger.description = 'Request resource by ID'
 	// #swagger.summary = 'Find resource by ID'\
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
+		console.log("got here");
 		const resource = await mongodb
 			.getDb()
 			.db(database)
@@ -89,17 +79,6 @@ const createResource = async (req, res) => {
 		}] */
 
 	try {
-
-		if (!req.oidc.isAuthenticated()) {
-			throw new Error(
-				`Not authorized to delete resources, please log in at /login `
-			);
-		}
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
 
 		const alreadyExists = await mongodb
 			.getDb()
@@ -156,17 +135,6 @@ const deleteResource = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-		if (!req.oidc.isAuthenticated()) {
-			throw new Error(
-				`Not authorized to delete resources, please log in at /login `
-			);
-		}
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		const response = await mongodb
 			.getDb()
 			.db(database)
@@ -208,16 +176,6 @@ const updateResource = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-		if (!req.oidc.isAuthenticated()) {
-			throw new Error(
-				`Not authorized to update resources, please log in at /login `
-			);
-		}
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
 
 		// attempt to get previous values for date_created and likes
 		let date_created = null;

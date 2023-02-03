@@ -50,15 +50,4 @@ const validateResource = [
 	check('featured_technologies.*').trim().escape(),
 ];
 
-/*
-const tagsValidate = []
-
-const featuredTechnologiesValidate = []
-
-// const userValidate = []
-
-*/
-
-// .isBoolean
-
 module.exports = { validateResource };
