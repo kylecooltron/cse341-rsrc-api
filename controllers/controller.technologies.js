@@ -10,11 +10,6 @@ const getAllTechnologies = async (req, res) => {
 	// #swagger.description = 'Request list of all technologies/languages'
 	// #swagger.summary = 'Return list of technologies/languages'
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		await mongodb
 			.getDb()
 			.db(database)
@@ -39,11 +34,6 @@ const getTechnologyById = async (req, res) => {
 	// #swagger.description = 'Request technology by ID'
 	// #swagger.summary = 'Find technology by ID'
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		const techology = await mongodb
 			.getDb()
 			.db(database)
@@ -84,11 +74,6 @@ const createTechnology = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		const alreadyExists = await mongodb
 			.getDb()
 			.db(database)
@@ -132,17 +117,6 @@ const deleteTechnology = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-		if (!req.oidc.isAuthenticated()) {
-			throw new Error(
-				`Not authorized to delete technology, please log in at /login `
-			);
-		}
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		const response = await mongodb
 			.getDb()
 			.db(database)
@@ -179,17 +153,6 @@ const updateTechnology = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-		if (!req.oidc.isAuthenticated()) {
-			throw new Error(
-				`Not authorized to update technology, please log in at /login `
-			);
-		}
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		}
-
 		let date_created = null;
 		const alreadyExists = await mongodb
 			.getDb()

@@ -8,11 +8,6 @@ const getAllTags = async (req, res) => {
   // #swagger.tags = ['Tags']
   // #swagger.description = 'Request list of all Tags'
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
     await mongodb.getDb().db(database).collection(collection).find().toArray((err, list) => {
       if (err) {
         res.status(500).send({
@@ -32,11 +27,6 @@ const getTagById = async (req, res) => {
   // #swagger.tags = ['Tags']
   // #swagger.description = 'Request Tag by ID'
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
     const resource = await mongodb.getDb().db(database).collection(collection).findOne(
       {
         "_id": ObjectId(req.params.id)
@@ -75,11 +65,6 @@ const createTag = async (req, res) => {
                "Basic": []
         }] */
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
     const alreadyExists = await mongodb.getDb().db(database).collection(collection).findOne({ title: req.body.name });
     if (alreadyExists) {
       throw new Error(`Tag with name already exists: ${req.body.name}`);
@@ -115,16 +100,6 @@ const deleteTag = async (req, res) => {
                "Basic": []
         }] */
   try {
-
-    if (!req.oidc.isAuthenticated()) {
-      throw new Error(`Not authorized to delete resources, please log in at /login `);
-    }
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
     const response = await mongodb.getDb().db(database).collection(collection).deleteOne(
       { _id: new ObjectId(req.params.id) },
       true
@@ -159,16 +134,6 @@ const updateTag = async (req, res) => {
                "Basic": []
         }] */
   try {
-
-    if (!req.oidc.isAuthenticated()) {
-      throw new Error(`Not authorized to update tags, please log in at /login `);
-    }
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
     const tag = {
       name: req.body.name,
       usage: req.body.usage

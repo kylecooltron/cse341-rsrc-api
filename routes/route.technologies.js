@@ -5,6 +5,7 @@ const routes = require('express').Router();
 const technologyController = require('../controllers/controller.technologies');
 const { validateTechnology } = require('../middlewares/validate.technologies');
 const { checkAccess } = require('../middlewares/authorize');
+const { checkValidationResult } = require('../middlewares/validation.check');
 
 // get all technologies
 routes.get('/', technologyController.getAllTechnologies);
@@ -15,6 +16,7 @@ routes.post(
 	'/',
 	checkAccess,
 	validateTechnology,
+	checkValidationResult,
 	technologyController.createTechnology
 );
 // put - update technology details
@@ -22,6 +24,7 @@ routes.put(
 	'/:id',
 	checkAccess,
 	validateTechnology,
+	checkValidationResult,
 	technologyController.updateTechnology
 );
 // delete
