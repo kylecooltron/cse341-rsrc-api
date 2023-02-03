@@ -11,24 +11,36 @@ const { checkValidationResult } = require('../middlewares/validation.check');
 // get all technologies
 routes.get('/', technologyController.getAllTechnologies);
 // get techology by id
-routes.get('/:id', validateDocumentID, technologyController.getTechnologyById);
+routes.get(
+	'/:id',
+	validateDocumentID,
+	checkValidationResult,
+	technologyController.getTechnologyById
+);
 // post - create new technology
 routes.post(
 	'/',
 	checkAccess,
 	validateTechnology,
-	// checkValidationResult,
+	checkValidationResult,
 	technologyController.createTechnology
 );
 // put - update technology details
 routes.put(
 	'/:id',
 	checkAccess,
+	validateDocumentID,
 	validateTechnology,
-	// checkValidationResult,
+	checkValidationResult,
 	technologyController.updateTechnology
 );
 // delete
-routes.delete('/:id', checkAccess, technologyController.deleteTechnology);
+routes.delete(
+	'/:id',
+	checkAccess,
+	validateDocumentID,
+	checkValidationResult,
+	technologyController.deleteTechnology
+);
 
 module.exports = routes;

@@ -32,7 +32,7 @@ const getResourceById = async (req, res) => {
 	// #swagger.description = 'Request resource by ID'
 	// #swagger.summary = 'Find resource by ID'\
 	try {
-		console.log("got here");
+		// console.log("got here");
 		const resource = await mongodb
 			.getDb()
 			.db(database)
@@ -79,7 +79,6 @@ const createResource = async (req, res) => {
 		}] */
 
 	try {
-
 		const alreadyExists = await mongodb
 			.getDb()
 			.db(database)
@@ -176,7 +175,6 @@ const updateResource = async (req, res) => {
 			   "Basic": []
 		}] */
 	try {
-
 		// attempt to get previous values for date_created and likes
 		let date_created = null;
 		let likes = 0;

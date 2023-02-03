@@ -353,6 +353,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -385,6 +388,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
@@ -473,6 +479,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -489,6 +498,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Return list of tags",
         "description": "Request list of all Tags",
         "produces": [
           "application/json"
@@ -507,6 +517,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Create tag",
         "description": "",
         "parameters": [
           {
@@ -559,6 +570,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Find tag by ID",
         "description": "Request Tag by ID",
         "produces": [
           "application/json"
@@ -584,6 +596,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Updates tag by ID",
         "description": "",
         "parameters": [
           {
@@ -640,6 +653,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Deletes tag by ID",
         "description": "🔒 Delete existing tag (Requires user to be logged in)",
         "parameters": [
           {
@@ -655,6 +669,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"

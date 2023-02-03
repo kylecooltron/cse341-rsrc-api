@@ -14,7 +14,7 @@ const doc = {
 			For assistance, or to contribute to the project see the <a href='https://github.com/kylecooltron/cse341-rsrc-api'>Github Repo</a>
 			 `,
 	},
-	// URL for localhost
+	// URL for testing under localhost
 	// host: 'localhost:3000',
 	// schemes: ['http'],
 	host: 'cse341-rsrc-api.onrender.com',
