@@ -7,7 +7,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const { ObjectId } = require('mongodb');
 
 const database_name = "cse341-rsrc-database";
-const collection_name = "technology";
+const collection_name = "technologies";
 let mongo_memory_server;
 let uri;
 
@@ -119,108 +119,110 @@ describe('Test Technologies handlers with in-memory Mongo', () => {
 		expect(res.header['content-type']).toBe('application/json; charset=utf-8');
 		expect(res.statusCode).toBe(200);
 		// expect data response to match fake data
+		console.log('this is the res.body');
+		console.log(res.body);
         expect(
 			JSON.stringify(res.body) === JSON.stringify(fake_technologies)
 	  ).toBe(true);
 	});
 
-	// test('get technology by ID /:id', async () => {
-	// 	/**
-	// 	 * Test the getTechnologyById handler in Technologies controller
-	// 	 */
+	test('get technology by ID /:id', async () => {
+		/**
+		 * Test the getTechnologyById handler in Technologies controller
+		 */
 
-	// 	// add fake technologies to in-memory DB
-	// 	addFakeData();
-	// 	// send get request
-	// 	const res = await request(app).get(
-	// 		`/technologies/${fake_technologies[0]._id}`
-	// 	);
-	// 	// expected conditions - - - - - - -
-	// 	expect(res.header['content-type']).toBe(
-	// 		'application/json; charset=utf-8'
-	// 	);
-	// 	expect(res.statusCode).toBe(200);
-	// 	// expect data response to match fake data
-	// 	expect(
-	// 		JSON.stringify(res.body) === JSON.stringify(fake_technologies[0])
-	// 	).toBe(true);
-	// });
+		// add fake technologies to in-memory DB
+		addFakeData();
+		// send get request
+		const res = await request(app).get(
+			`/technologies/${fake_technologies[0]._id}`
+		);
+		// expected conditions - - - - - - -
+		expect(res.header['content-type']).toBe(
+			'application/json; charset=utf-8'
+		);
+		expect(res.statusCode).toBe(200);
+		// expect data response to match fake data
+		expect(
+			JSON.stringify(res.body) === JSON.stringify(fake_technologies[0])
+		).toBe(true);
+	});
 
-	// test('create technology /', async () => {
-	// 	/**
-	// 	 * Test the createTechnology handler in Technologies controller
-	// 	 */
+	test('create technology /', async () => {
+		/**
+		 * Test the createTechnology handler in Technologies controller
+		 */
 
-	// 	// send get request
-	// 	const res = await request(app)
-	// 		.post('/technologies')
-	// 		.send(fake_technologies[0]);
-	// 	// expected conditions - - - - - - -
-	// 	expect(res.header['content-type']).toBe(
-	// 		'application/json; charset=utf-8'
-	// 	);
-	// 	expect(res.statusCode).toBe(201);
-	// 	expect(res.body.acknowledged).toBe(true);
-	// });
+		// send get request
+		const res = await request(app)
+			.post('/technologies')
+			.send(fake_technologies[0]);
+		// expected conditions - - - - - - -
+		expect(res.header['content-type']).toBe(
+			'application/json; charset=utf-8'
+		);
+		expect(res.statusCode).toBe(201);
+		expect(res.body.acknowledged).toBe(true);
+	});
 
-	// test('delete technology by ID /:id', async () => {
-	// 	/**
-	// 	 * Test the deleteTechnology handler in Technologies controller
-	// 	 */
-	// 	// add fake technologies to in-memory DB
-	// 	addFakeData();
+	test('delete technology by ID /:id', async () => {
+		/**
+		 * Test the deleteTechnology handler in Technologies controller
+		 */
+		// add fake technologies to in-memory DB
+		addFakeData();
 
-	// 	// send delete request
-	// 	const res = await request(app).delete(
-	// 		`/technologies/${fake_technologies[0]._id}`
-	// 	);
-	// 	// expected conditions - - - - - - -
-	// 	expect(res.statusCode).toBe(204);
+		// send delete request
+		const res = await request(app).delete(
+			`/technologies/${fake_technologies[0]._id}`
+		);
+		// expected conditions - - - - - - -
+		expect(res.statusCode).toBe(204);
 
-	// 	// Check database to make sure technology got deleted - - - - - -
-	// 	// send get all technologies request
-	// 	const validate_result = await request(app).get('/technologies');
-	// 	// expected conditions - - - - - - -
-	// 	expect(validate_result.header['content-type']).toBe(
-	// 		'application/json; charset=utf-8'
-	// 	);
-	// 	expect(validate_result.statusCode).toBe(200);
-	// 	// expect data response to not include deleted technology
-	// 	expect(
-	// 		JSON.stringify(validate_result.body) ===
-	// 			JSON.stringify([fake_technologies[1]])
-	// 	).toBe(true);
-	// });
+		// Check database to make sure technology got deleted - - - - - -
+		// send get all technologies request
+		const validate_result = await request(app).get('/technologies');
+		// expected conditions - - - - - - -
+		expect(validate_result.header['content-type']).toBe(
+			'application/json; charset=utf-8'
+		);
+		expect(validate_result.statusCode).toBe(200);
+		// expect data response to not include deleted technology
+		expect(
+			JSON.stringify(validate_result.body) ===
+				JSON.stringify([fake_technologies[1]])
+		).toBe(true);
+	});
 
-	// test('update technology by ID /:id', async () => {
-	// 	/**
-	// 	 * Test the updateTechnology handler in Technologies controller
-	// 	 */
-	// 	// add fake technologies to in-memory DB
-	// 	addFakeData();
+	test('update technology by ID /:id', async () => {
+		/**
+		 * Test the updateTechnology handler in Technologies controller
+		 */
+		// add fake technologies to in-memory DB
+		addFakeData();
 
-	// 	let updated_technology = fake_technologies[0];
-	// 	updated_technology.title = 'Updated Title';
+		let updated_technology = fake_technologies[0];
+		updated_technology.name = 'Updated Name';
 
-	// 	// send put request
-	// 	const res = await request(app)
-	// 		.put(`/technologies/${fake_technologies[0]._id}`)
-	// 		.send(updated_technology);
-	// 	// expected conditions - - - - - - -
-	// 	expect(res.statusCode).toBe(204);
+		// send put request
+		const res = await request(app)
+			.put(`/technologies/${fake_technologies[0]._id}`)
+			.send(updated_technology);
+		// expected conditions - - - - - - -
+		expect(res.statusCode).toBe(204);
 
-	// 	// Check database to make sure technology got updated - - - - - -
-	// 	// send get all technologies request
-	// 	const validate_result = await request(app).get(
-	// 		`/technologies/${fake_technologies[0]._id}`
-	// 	);
-	// 	// expected conditions - - - - - - -
-	// 	expect(validate_result.header['content-type']).toBe(
-	// 		'application/json; charset=utf-8'
-	// 	);
-	// 	expect(validate_result.statusCode).toBe(200);
-	// 	console.log(validate_result.body);
-	// 	// expect data response to prove title was updated
-	// 	expect(validate_result.body.title).toBe('Updated Title');
-	// });
+		// Check database to make sure technology got updated - - - - - -
+		// send get all technologies request
+		const validate_result = await request(app).get(
+			`/technologies/${fake_technologies[0]._id}`
+		);
+		// expected conditions - - - - - - -
+		expect(validate_result.header['content-type']).toBe(
+			'application/json; charset=utf-8'
+		);
+		expect(validate_result.statusCode).toBe(200);
+		console.log(validate_result.body);
+		// expect data response to prove title was updated
+		expect(validate_result.body.name).toBe('Updated Name');
+	});
 });
