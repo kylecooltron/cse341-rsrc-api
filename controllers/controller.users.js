@@ -32,6 +32,9 @@ const getUserById = async (req, res) => {
 	// #swagger.tags = ['Users']
 	// #swagger.description = 'Request User by ID'
 	// #swagger.summary = 'Find user by ID'
+    /* #swagger.security = [{
+               "Basic": []
+        }] */
 	try {
 		const resource = await mongodb
 			.getDb()
