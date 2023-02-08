@@ -769,7 +769,7 @@
           "Users"
         ],
         "summary": "Find user by ID",
-        "description": "Request User by ID (Requires user to be logged in)",
+        "description": "🔒 Request User by ID (Requires user to be logged in)",
         "produces": [
           "application/json"
         ],

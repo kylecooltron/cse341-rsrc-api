@@ -31,7 +31,7 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
 	// #swagger.tags = ['Users']
-	// #swagger.description = 'Request User by ID  (Requires user to be logged in)'
+	// #swagger.description = '🔒 Request User by ID  (Requires user to be logged in)'
 	// #swagger.summary = 'Find user by ID'
     /* #swagger.security = [{
                "Basic": []
