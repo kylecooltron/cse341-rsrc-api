@@ -33,7 +33,7 @@ const getTagById = async (req, res) => {
 	// #swagger.description = 'Request Tag by ID'
 	// #swagger.summary = 'Find tag by ID'
 	try {
-		const resource = await mongodb
+		const tag = await mongodb
 			.getDb()
 			.db(database)
 			.collection(collection)
@@ -43,7 +43,7 @@ const getTagById = async (req, res) => {
 
 		if (resource) {
 			res.setHeader('Content-Type', 'application/json');
-			res.status(200).json(resource);
+			res.status(200).json(tag);
 		} else {
 			res.status(500).send({
 				error: `Tag not found with id ${req.params.id}`,

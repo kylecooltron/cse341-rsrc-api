@@ -6,11 +6,50 @@
 
 // - - - - - - - - - - - - - - - - - - - - - LOCAL HOST
 
-### list all Resources
+### list all Users
 {{local}}/users
 
+### list user by id
+{{local}}/users/63d35dd1d04d4248a6be8bff
+
+
+### Create user
+POST {{local}}/users HTTP/1.1
+content-type: application/json
+
+{"profile_id": "google-oauth2|1111111111111111111111","name": "Test User"}
+
+
+### Update user
+PUT {{local}}/users/63d35dd1d04d4248a6be8bff HTTP/1.1 
+content-type: application/json
+
+{"profile_id": "google-oauth2|1111111111111111111111","name": "Test User"}
+
+### Delete user by Id
+DELETE {{local}}/users/63d35dd1d04d4248a6be8bff HTTP/1.1
 
 // - - - - - - - - - - - - - - - - - - - - - RENDER
 
-### list all resources
+### list all Users
 {{render}}/users
+
+### list user by id
+{{render}}/users/63d35dd1d04d4248a6be8bff
+
+
+### Create user
+POST {{render}}/users HTTP/1.1
+content-type: application/json
+
+{"profile_id": "google-oauth2|1111111111111111111111","name": "Test User"}
+
+
+### Update user
+PUT {{render}}/users/63d35dd1d04d4248a6be8bff HTTP/1.1 
+content-type: application/json
+
+{"profile_id": "google-oauth2|1111111111111111111111","name": "Test User"}
+
+### Delete user by Id
+DELETE {{render}}/users/63d35dd1d04d4248a6be8bff HTTP/1.1

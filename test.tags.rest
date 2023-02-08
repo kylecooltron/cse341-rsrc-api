@@ -1,0 +1,55 @@
+
+@local = http://localhost:3000
+@render = https://cse341-rsrc-api.onrender.com
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - LOCAL HOST
+
+### list all Tags
+{{local}}/tags
+
+### list tag by id
+{{local}}/tags/63d7fecc88116b761ad4eca8
+
+
+### Create tag
+POST {{local}}/tags HTTP/1.1
+content-type: application/json
+
+{"name": "Test Name","usage": []}
+
+
+### Update tag
+PUT {{local}}/tags/63d7fecc88116b761ad4eca8 HTTP/1.1 
+content-type: application/json
+
+{"profile_id": "Test Name", "usage" []}
+
+### Delete tag by Id
+DELETE {{local}}/tags/63d7fecc88116b761ad4eca8 HTTP/1.1
+
+// - - - - - - - - - - - - - - - - - - - - - RENDER
+
+### list all Tags
+{{render}}/tags
+
+### list tag by id
+{{render}}/tags/63d7fecc88116b761ad4eca8
+
+
+### Create tag
+POST {{render}}/tags HTTP/1.1
+content-type: application/json
+
+{"name": "Test Name","usage": []}
+
+
+### Update tag
+PUT {{render}}/tags/63d7fecc88116b761ad4eca8 HTTP/1.1 
+content-type: application/json
+
+{"profile_id": "Test Name", "usage" []}
+
+### Delete tag by Id
+DELETE {{render}}/tags/63d7fecc88116b761ad4eca8 HTTP/1.1

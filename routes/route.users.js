@@ -14,6 +14,8 @@ routes.get("/", checkAccess, validateUser, usersController.getAllUsers);
 // get user by id
 routes.get(
   '/:id',
+  validateDocumentID,
+  checkValidationResult,
   usersController.getUserById
 );
 // post
