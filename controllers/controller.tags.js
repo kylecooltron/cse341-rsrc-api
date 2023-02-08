@@ -41,7 +41,7 @@ const getTagById = async (req, res) => {
 				_id: ObjectId(req.params.id),
 			});
 
-		if (resource) {
+		if (tag) {
 			res.setHeader('Content-Type', 'application/json');
 			res.status(200).json(tag);
 		} else {
