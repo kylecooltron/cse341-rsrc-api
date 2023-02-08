@@ -28,6 +28,153 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+const getUserById = async (req, res) => {
+	// #swagger.tags = ['Users']
+	// #swagger.description = 'Request User by ID'
+	// #swagger.summary = 'Find user by ID'
+	try {
+		const resource = await mongodb
+			.getDb()
+			.db(database)
+			.collection(collection)
+			.findOne({
+				_id: ObjectId(req.params.id),
+			});
+
+		if (resource) {
+			res.setHeader('Content-Type', 'application/json');
+			res.status(200).json(resource);
+		} else {
+			res.status(500).send({
+				error: `Tag not found with id ${req.params.id}`,
+			});
+		}
+	} catch (err) {
+		res.status(500).send({
+			error: String(err),
+			params: req.params,
+		});
+	}
+};
+
+const createUser = async (req, res) => {
+	// #swagger.tags = ['Users']
+	// #swagger.summary = 'Create user',
+	/*  #swagger.parameters['obj'] = {
+              in: 'body',
+              description: '🔒 Create new tag (Requires user to be logged in)',
+              schema: {
+                  $profile_id: 'Google Oauth2 Profile',
+                  $name: "user name"
+              }
+      } */
+	/* #swagger.security = [{
+               "Basic": []
+        }] */
+	try {
+		const alreadyExists = await mongodb
+			.getDb()
+			.db(database)
+			.collection(collection)
+			.findOne({ title: req.body.name });
+		if (alreadyExists) {
+			throw new Error(`Tag with name already exists: ${req.body.name}`);
+		}
+
+		const user = {
+			profile_id: req.body.profile_id,
+			name: req.body.name,
+		};
+
+		const response = await mongodb
+			.getDb()
+			.db(database)
+			.collection(collection)
+			.insertOne(user);
+
+		if (response.acknowledged) {
+			res.status(201).json(response);
+		} else {
+			throw new Error(
+				response.error || 'Some error occurred while creating the tag.'
+			);
+		}
+	} catch (err) {
+		res.status(500).send({
+			error: String(err),
+			body: req.body,
+		});
+	}
+};
+
+const deleteUser = async (req, res) => {
+	// #swagger.tags = ['Users']
+	// #swagger.summary = 'Deletes user by ID'
+	// #swagger.description = '🔒 Delete existing user (Requires user to be logged in)'
+	/* #swagger.security = [{
+               "Basic": []
+        }] */
+	try {
+		const response = await mongodb
+			.getDb()
+			.db(database)
+			.collection(collection)
+			.deleteOne({ _id: new ObjectId(req.params.id) }, true);
+
+		if (response.deletedCount > 0) {
+			res.status(204).send();
+		} else {
+			const err_string = `ID: ${req.params.id} may not exist in the DB`;
+			throw new Error(response.error || err_string);
+		}
+	} catch (err) {
+		res.status(500).send({
+			error: String(err),
+			params: req.params,
+		});
+	}
+};
+
+const updateUser = async (req, res) => {
+	// #swagger.tags = ['Users']
+	// #swagger.summary = 'Updates user by ID'
+	/*    #swagger.parameters['obj'] = {
+              in: 'body',
+              description: '🔒 Update existing user (Requires user to be logged in)',
+              schema: {
+                  $profile_id: 'Google Oauth2 Profile',
+                  $name: "user name"
+              }
+      } */
+	/* #swagger.security = [{
+               "Basic": []
+        }] */
+	try {
+		const user = {
+			profile_id: req.body.profile_id,
+			name: req.body.name,
+		};
+		const response = await mongodb
+			.getDb()
+			.db(database)
+			.collection(collection)
+			.replaceOne({ _id: new ObjectId(req.params.id) }, user);
+
+		if (response.modifiedCount > 0) {
+			res.status(204).send();
+		} else {
+			const err_string = `ID: ${req.params.id} may not exist in the DB`;
+			throw new Error(response.error || err_string);
+		}
+	} catch (err) {
+		res.status(500).send({
+			error: String(err),
+			params: req.params,
+			body: req.body,
+		});
+	}
+};
+
 const isAuthenticated = async (req, res) => {
     // # swagger.ignore = true
     /**
@@ -73,4 +220,4 @@ const isAuthenticated = async (req, res) => {
     }
 };
 
-module.exports = { isAuthenticated, getAllUsers };
+module.exports = { isAuthenticated, getAllUsers, getUserById, createUser, deleteUser, updateUser };
