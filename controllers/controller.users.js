@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const database = "cse341-rsrc-database";
 const collection = "users";
 const { validationResult } = require('express-validator');
+const { ObjectId } = require('mongodb');
 
 const getAllUsers = async (req, res) => {
     // #swagger.tags = ['Users']
@@ -36,20 +37,20 @@ const getUserById = async (req, res) => {
                "Basic": []
         }] */
 	try {
-		const resource = await mongodb
+		const user = await mongodb
 			.getDb()
 			.db(database)
 			.collection(collection)
 			.findOne({
-				_id: ObjectId(req.params.id),
+				_id: ObjectId(req.params._id),
 			});
 
-		if (resource) {
+		if (user) {
 			res.setHeader('Content-Type', 'application/json');
-			res.status(200).json(resource);
+			res.status(200).json(user);
 		} else {
 			res.status(500).send({
-				error: `Tag not found with id ${req.params.id}`,
+				error: `user not found with id ${req.params.id}`,
 			});
 		}
 	} catch (err) {
@@ -81,7 +82,7 @@ const createUser = async (req, res) => {
 			.collection(collection)
 			.findOne({ title: req.body.name });
 		if (alreadyExists) {
-			throw new Error(`Tag with name already exists: ${req.body.name}`);
+			throw new Error(`User with name already exists: ${req.body.name}`);
 		}
 
 		const user = {
@@ -99,7 +100,7 @@ const createUser = async (req, res) => {
 			res.status(201).json(response);
 		} else {
 			throw new Error(
-				response.error || 'Some error occurred while creating the tag.'
+				response.error || 'Some error occurred while creating the user.'
 			);
 		}
 	} catch (err) {
