@@ -690,7 +690,7 @@
           "Users"
         ],
         "summary": "Return list of users",
-        "description": "🔒 Request list of all Users (Must be logged in)",
+        "description": "🔒 Request list of all Users (Requires user to be logged in)",
         "produces": [
           "application/json"
         ],
@@ -769,7 +769,7 @@
           "Users"
         ],
         "summary": "Find user by ID",
-        "description": "Request User by ID",
+        "description": "Request User by ID (Requires user to be logged in)",
         "produces": [
           "application/json"
         ],

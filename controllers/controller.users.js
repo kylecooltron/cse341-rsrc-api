@@ -6,7 +6,7 @@ const { ObjectId } = require('mongodb');
 
 const getAllUsers = async (req, res) => {
     // #swagger.tags = ['Users']
-    // #swagger.description = '🔒 Request list of all Users (Must be logged in)'
+    // #swagger.description = '🔒 Request list of all Users  (Requires user to be logged in)'
     // #swagger.summary = 'Return list of users'
     /* #swagger.security = [{
                "Basic": []
@@ -31,7 +31,7 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
 	// #swagger.tags = ['Users']
-	// #swagger.description = 'Request User by ID'
+	// #swagger.description = 'Request User by ID  (Requires user to be logged in)'
 	// #swagger.summary = 'Find user by ID'
     /* #swagger.security = [{
                "Basic": []
