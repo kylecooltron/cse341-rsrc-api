@@ -13,9 +13,7 @@ const { checkAccess } = require("../middlewares/authorize");
 routes.get("/", checkAccess, validateUser, usersController.getAllUsers);
 // get user by id
 routes.get(
-  "/:id",
-  validateDocumentID,
-  checkValidationResult,
+  '/:id',
   usersController.getUserById
 );
 // post

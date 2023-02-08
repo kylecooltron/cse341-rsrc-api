@@ -42,9 +42,9 @@ const getUserById = async (req, res) => {
 			.db(database)
 			.collection(collection)
 			.findOne({
-				_id: ObjectId(req.params._id),
+				_id: ObjectId(req.params.id),
 			});
-
+			
 		if (user) {
 			res.setHeader('Content-Type', 'application/json');
 			res.status(200).json(user);
@@ -80,7 +80,7 @@ const createUser = async (req, res) => {
 			.getDb()
 			.db(database)
 			.collection(collection)
-			.findOne({ title: req.body.name });
+			.findOne({ name: req.body.name });
 		if (alreadyExists) {
 			throw new Error(`User with name already exists: ${req.body.name}`);
 		}
