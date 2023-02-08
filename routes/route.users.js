@@ -14,9 +14,8 @@ routes.get("/", checkAccess, validateUser, usersController.getAllUsers);
 // get user by id
 routes.get(
   "/:id",
-  checkAccess,
-  validateUser,
   validateDocumentID,
+  checkValidationResult,
   usersController.getUserById
 );
 // post
@@ -41,7 +40,6 @@ routes.delete(
   "/:id",
   checkAccess,
   validateDocumentID,
-  checkValidationResult,
   usersController.deleteUser
 );
 
