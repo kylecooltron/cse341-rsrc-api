@@ -114,7 +114,7 @@ describe('Test users handlers with in-memory mongo', () => {
          * Test the getAllusers handler in users controller
          */
 
-        // add fake tag to in-memory DB
+        // add fake user to in-memory DB
         addFakeData();
         // send get request
         const res = await request(app).get('/users');
